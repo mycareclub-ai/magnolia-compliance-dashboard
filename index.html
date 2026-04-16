@@ -295,6 +295,49 @@ body {
 .timeline-item .tl-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
 .timeline-item .tl-desc { font-size: 13px; color: var(--gray-500); }
 
+/* ── SCREENSHOT GALLERY ── */
+.screenshot-gallery { display: grid; grid-template-columns: 1fr; gap: 28px; margin-bottom: 24px; }
+.screenshot-card {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: 12px; overflow: hidden; transition: var(--transition);
+}
+.screenshot-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(57,181,74,0.1); }
+.screenshot-img-wrap {
+  position: relative; overflow: hidden; border-bottom: 1px solid var(--gray-200);
+  cursor: pointer;
+}
+.screenshot-img-wrap img {
+  width: 100%; display: block; transition: transform 0.3s ease;
+}
+.screenshot-img-wrap:hover img { transform: scale(1.02); }
+.screenshot-caption {
+  padding: 18px 24px;
+}
+.screenshot-caption h4 {
+  font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--navy);
+  display: flex; align-items: center; gap: 8px;
+}
+.screenshot-caption h4 .cap-icon {
+  width: 28px; height: 28px; border-radius: 6px; display: flex;
+  align-items: center; justify-content: center; font-size: 14px;
+  background: var(--gold-dim); color: var(--gold); flex-shrink: 0;
+}
+.screenshot-caption p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+.screenshot-grid-2 { grid-template-columns: 1fr 1fr; }
+
+.screenshot-overlay {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85); z-index: 9999; align-items: center;
+  justify-content: center; padding: 40px; cursor: zoom-out;
+}
+.screenshot-overlay.visible { display: flex; }
+.screenshot-overlay img {
+  max-width: 95%; max-height: 95vh; border-radius: 8px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 1024px) { .screenshot-grid-2 { grid-template-columns: 1fr; } }
+
 /* ── PRINT ── */
 @media print {
   .sidebar, .header { display: none; }
@@ -370,7 +413,7 @@ body {
     </div>
     <div class="nav-item" onclick="showPage('tech')">
       <div class="nav-icon">💻</div>
-      <span class="nav-label">Technology</span>
+      <span class="nav-label">Technology (PolicyDen)</span>
     </div>
     <div class="nav-item" onclick="showPage('legal')">
       <div class="nav-icon">⚖️</div>
@@ -471,7 +514,7 @@ body {
           <li><span class="check green">✓</span><span><strong>Compliance</strong> — CTM mitigation, grievance handling, corrective action plans, carrier liaison</span></li>
           <li><span class="check green">✓</span><span><strong>Human Resources</strong> — Licensed agent hiring, onboarding, credentialing, continuing education</span></li>
           <li><span class="check green">✓</span><span><strong>Operations</strong> — Technology infrastructure, data security, call recording, CRM management</span></li>
-          <li><span class="check green">✓</span><span><strong>Technology</strong> — AI platform, data engineering, system integrations, automation infrastructure</span></li>
+          <li><span class="check green">✓</span><span><strong>Technology</strong> — PolicyDen CRM platform, enrollment lifecycle management, automated compliance workflows, audit trail</span></li>
           <li><span class="check green">✓</span><span><strong>Legal</strong> — Regulatory monitoring, contract management, HIPAA/privacy, carrier compliance</span></li>
         </ul>
       </div>
@@ -1044,78 +1087,92 @@ body {
 <div class="dept-page" id="page-tech">
   <div class="dept-header">
     <div class="dept-badge" style="background:rgba(16,185,129,0.1);color:#065f46;">Department</div>
-    <h2>Technology</h2>
-    <p>AI-driven automation, data engineering, cross-system integrations, and software development. Technology builds and maintains the intelligent infrastructure that powers MyCareClub's compliance monitoring, automated reporting, and operational efficiency at scale.</p>
+    <h2>Technology — PolicyDen CRM</h2>
+    <p>MyCareClub's enrollment lifecycle, member communications, compliance tracking, and agent performance management are centralized in PolicyDen — a purpose-built CRM for Medicare Advantage operations. Every policy, text message, status change, and workflow action is documented with a full audit trail.</p>
   </div>
 
   <div class="stats-row">
-    <div class="stat-card gold"><div class="stat-label">AI Platform</div><div class="stat-value">MCC-AI</div><div class="stat-sub">Proprietary automation & analytics engine</div></div>
-    <div class="stat-card green"><div class="stat-label">Automated Reports</div><div class="stat-value">Hourly</div><div class="stat-sub">Real-time sales & compliance reporting</div></div>
-    <div class="stat-card blue"><div class="stat-label">System Integrations</div><div class="stat-value">5+</div><div class="stat-sub">Convoso, PolicyDen, WeGenerate, Slack, Notion</div></div>
-    <div class="stat-card amber"><div class="stat-label">Data Pipeline</div><div class="stat-value">Live</div><div class="stat-sub">Cross-system sync and aggregation</div></div>
+    <div class="stat-card gold"><div class="stat-label">CRM Platform</div><div class="stat-value">PolicyDen</div><div class="stat-sub">Centralized enrollment & compliance system</div></div>
+    <div class="stat-card green"><div class="stat-label">Enrollment Tracking</div><div class="stat-value">100%</div><div class="stat-sub">Every MA/MAPD policy tracked end-to-end</div></div>
+    <div class="stat-card blue"><div class="stat-label">Automated Workflows</div><div class="stat-value">10</div><div class="stat-sub">Post-enrollment outreach & status actions</div></div>
+    <div class="stat-card amber"><div class="stat-label">Audit Trail</div><div class="stat-value">Complete</div><div class="stat-sub">Status log, comments, docs on every policy</div></div>
   </div>
 
+  <!-- ── SMS / Member Messaging ── -->
+  <div class="screenshot-gallery" style="margin-top: 8px;">
+    <div class="screenshot-card">
+      <div class="screenshot-img-wrap" onclick="openScreenshot(this)">
+        <img src="img/policyden-sms.png" alt="PolicyDen SMS — post-enrollment text messaging with member" loading="lazy">
+      </div>
+      <div class="screenshot-caption">
+        <h4><span class="cap-icon">📱</span> Post-Enrollment Text Messaging</h4>
+        <p>Licensed agents send structured SMS outreach at 7, 10, 14, 20, and 24 days post-enrollment to confirm plan understanding, verify document delivery, and intercept issues before they reach the carrier. Every message is logged with timestamps and linked to the member's policy record. The right panel shows full contact info and associated policies at a glance.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Policies List + Policy Detail ── -->
+  <div class="screenshot-gallery screenshot-grid-2">
+    <div class="screenshot-card">
+      <div class="screenshot-img-wrap" onclick="openScreenshot(this)">
+        <img src="img/policyden-policies.png" alt="PolicyDen Policies — enrollment list with status tracking" loading="lazy">
+      </div>
+      <div class="screenshot-caption">
+        <h4><span class="cap-icon">📋</span> Policy Management & Status Tracking</h4>
+        <p>Every enrollment is tracked with real-time status (Issued, Withdrawn, Pending), carrier assignment, writing agent, and sale date. Summary cards provide instant visibility into pipeline health. Search, filter, and date-range controls enable fast auditing and compliance review.</p>
+      </div>
+    </div>
+    <div class="screenshot-card">
+      <div class="screenshot-img-wrap" onclick="openScreenshot(this)">
+        <img src="img/policyden-detail.png" alt="PolicyDen Policy Detail — full enrollment record with doctors and medications" loading="lazy">
+      </div>
+      <div class="screenshot-caption">
+        <h4><span class="cap-icon">📄</span> Policy Detail Record</h4>
+        <p>Each policy maintains a complete enrollment profile: carrier, plan number, election period, effective date, writing agent, in-network doctors, and active medications. Tabbed views for Documents, Comments, Audit Log, and Status Log provide a full compliance audit trail for every enrollment.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Workflows ── -->
+  <div class="screenshot-gallery">
+    <div class="screenshot-card">
+      <div class="screenshot-img-wrap" onclick="openScreenshot(this)">
+        <img src="img/policyden-workflows.png" alt="PolicyDen Workflows — automated post-enrollment outreach triggers" loading="lazy">
+      </div>
+      <div class="screenshot-caption">
+        <h4><span class="cap-icon">⚙️</span> Automated Compliance Workflows</h4>
+        <p>PolicyDen triggers automated actions based on policy lifecycle events. Post-enrollment outreach workflows fire at 7, 10, 14, 20, and 24 days after policy creation — ensuring every new enrollee receives timely follow-up. Status-change workflows handle cancellations, withdrawals, and issuance events with automated notifications and CRM updates. All workflows are toggleable and auditable.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Reporting ── -->
+  <div class="screenshot-gallery">
+    <div class="screenshot-card">
+      <div class="screenshot-img-wrap" onclick="openScreenshot(this)">
+        <img src="img/policyden-reporting.png" alt="PolicyDen Reporting — agent performance breakdown with effectuation rates" loading="lazy">
+      </div>
+      <div class="screenshot-caption">
+        <h4><span class="cap-icon">📊</span> Agent Performance & Effectuation Reporting</h4>
+        <p>Multi-level breakdown reports track every agent's enrollment pipeline: total policies, pending, accepted, cancelled, at-risk, issued, and placed — with effectuation and placement rate percentages. Reports are filterable by date range, agency, and agent, providing the compliance team with granular visibility into enrollment quality and agent-level trends.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Key Capabilities Summary ── -->
   <div class="accordion">
     <div class="accordion-item open">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🤖</span> AI & Automation Platform</span>
+        <span class="trigger-left"><span class="trigger-icon">🔒</span> Compliance & Audit Capabilities</span>
         <span class="arrow">▼</span>
       </button>
       <div class="accordion-content"><div class="accordion-inner">
         <ul class="proc-list">
-          <li><span class="check green">✓</span><span><strong>MCC-AI platform</strong> — proprietary FastAPI backend automating cross-system data collection, report generation, and compliance monitoring</span></li>
-          <li><span class="check green">✓</span><span>Hourly automated Slack reports combining Convoso call data, PolicyDen deal counts, and WeGenerate marketing spend into unified performance snapshots</span></li>
-          <li><span class="check green">✓</span><span>Agent performance rankings generated automatically — call volume, success rates, and deal production merged across systems</span></li>
-          <li><span class="check green">✓</span><span>Disposition intelligence: success codes synced directly from Convoso API — no hardcoded values, single source of truth</span></li>
-          <li><span class="check green">✓</span><span>Scheduled job infrastructure with resilient retry logic — background workers survive transient database outages without manual intervention</span></li>
-        </ul>
-      </div></div>
-    </div>
-
-    <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🔗</span> System Integrations & Data Engineering</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check blue">●</span><span><strong>Convoso integration</strong> — live call log retrieval, disposition sync, agent monitor, and campaign analytics via REST API</span></li>
-          <li><span class="check blue">●</span><span><strong>PolicyDen (Supabase) integration</strong> — real-time CRM queries for enrollment tracking, agent attribution, persistency analysis, and status change monitoring</span></li>
-          <li><span class="check blue">●</span><span><strong>WeGenerate integration</strong> — marketing spend attribution per agent and campaign, CPA calculations, and ROI tracking from RDS replica</span></li>
-          <li><span class="check blue">●</span><span><strong>Slack integration</strong> — automated Block Kit reports, real-time compliance alerts, escalation notifications, and scheduled performance digests</span></li>
-          <li><span class="check blue">●</span><span><strong>MongoDB data layer</strong> — aggregated report storage, disposition caching, scheduled job state management, and historical trend data</span></li>
-        </ul>
-      </div></div>
-    </div>
-
-    <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📊</span> Analytics & Business Intelligence</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check gold">★</span><span>Cross-system CPA calculations merging PolicyDen enrollment data with WeGenerate marketing spend — per-agent, per-carrier, per-campaign</span></li>
-          <li><span class="check gold">★</span><span>Persistency tracking with automated cohort analysis — carrier retention rates, rapid disenrollment flags, and agent-level trends</span></li>
-          <li><span class="check gold">★</span><span>Commission statement auditing tools — carrier payment reconciliation against contracted rates with variance detection</span></li>
-          <li><span class="check gold">★</span><span>Daily and weekly payroll automation integrating spiff data, ancillary sales, and hourly tracking into Gusto-ready exports</span></li>
-          <li><span class="check gold">★</span><span>Compliance dashboard generation — this framework document and supporting data visualizations maintained as living, versioned artifacts</span></li>
-        </ul>
-      </div></div>
-    </div>
-
-    <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🛡️</span> Infrastructure & Reliability</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check green">✓</span><span>Production deployment on Railway with automated CI/CD — merge to main triggers immediate deploy with zero downtime</span></li>
-          <li><span class="check green">✓</span><span>Background scheduler resilience: all scheduled jobs run as daemon threads with exception isolation — no single failure kills the process</span></li>
-          <li><span class="check green">✓</span><span>Connection timeout enforcement on all external database queries — prevents worker hangs during upstream outages</span></li>
-          <li><span class="check green">✓</span><span>Environment-driven configuration via pydantic-settings — secrets never committed, deployment-specific values externalized</span></li>
-          <li><span class="check green">✓</span><span>Comprehensive test coverage for critical paths: report generation, Slack formatting, schedule loop resilience, and edge cases</span></li>
+          <li><span class="check green">✓</span><span><strong>Complete audit trail</strong> — every policy has a Status Log recording each status change with timestamp, and an Audit Log tracking all modifications to the record</span></li>
+          <li><span class="check green">✓</span><span><strong>Comments & documentation</strong> — threaded notes on every policy from agents, QA, compliance, and customer service — available for carrier or CMS review on demand</span></li>
+          <li><span class="check green">✓</span><span><strong>Document management</strong> — SOAs, enrollment applications, and supporting documents attached directly to each policy record</span></li>
+          <li><span class="check green">✓</span><span><strong>Role-based access control</strong> — agents, supervisors, QA, compliance, and admin have distinct permission levels with PHI access restricted to licensed personnel</span></li>
+          <li><span class="check green">✓</span><span><strong>Automated post-enrollment outreach</strong> — 10 active workflows ensure every enrollee receives structured follow-up, with all touchpoints logged in the CRM</span></li>
         </ul>
       </div></div>
     </div>
@@ -1368,6 +1425,11 @@ body {
 
 </main>
 
+<!-- ═══ SCREENSHOT LIGHTBOX ═══ -->
+<div class="screenshot-overlay" id="screenshotOverlay" onclick="closeScreenshot()">
+  <img id="screenshotFull" src="" alt="Full-size screenshot">
+</div>
+
 <!-- ═══ JAVASCRIPT ═══ -->
 <script>
 function showPage(pageId) {
@@ -1382,6 +1444,22 @@ function toggleAccordion(trigger) {
   const item = trigger.closest('.accordion-item');
   item.classList.toggle('open');
 }
+
+function openScreenshot(wrap) {
+  var img = wrap.querySelector('img');
+  document.getElementById('screenshotFull').src = img.src;
+  document.getElementById('screenshotOverlay').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeScreenshot() {
+  document.getElementById('screenshotOverlay').classList.remove('visible');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeScreenshot();
+});
 
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.kpi-bar').forEach(bar => {
