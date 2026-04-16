@@ -4,409 +4,536 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Humana x MyCareClub — Compliance & Quality Framework</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy: #1a2e1a;
-  --navy-light: #243824;
-  --navy-mid: #2e4a2e;
-  --gold: #39B54A;
-  --gold-light: #7dd68a;
-  --gold-dim: rgba(57,181,74,0.12);
+  --slate-950: #020617;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
   --white: #ffffff;
-  --gray-50: #f8fcf8;
-  --gray-100: #eef6ef;
-  --gray-200: #dde8dd;
-  --gray-300: #b8c9b8;
-  --gray-400: #8a9f8a;
-  --gray-500: #647a64;
-  --gray-600: #4a5e4a;
-  --green: #22c55e;
-  --green-bg: rgba(34,197,94,0.1);
-  --blue: #3b82f6;
-  --blue-bg: rgba(59,130,246,0.1);
-  --amber: #f59e0b;
-  --amber-bg: rgba(245,158,11,0.1);
-  --red: #ef4444;
-  --red-bg: rgba(239,68,68,0.1);
-  --sidebar-w: 280px;
-  --header-h: 72px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --accent: #00875a;
+  --accent-hover: #006d48;
+  --accent-subtle: rgba(0,135,90,0.07);
+  --accent-border: rgba(0,135,90,0.18);
+
+  --green: #16a34a;
+  --green-bg: rgba(22,163,74,0.08);
+  --blue: #2563eb;
+  --blue-bg: rgba(37,99,235,0.07);
+  --amber: #d97706;
+  --amber-bg: rgba(217,119,6,0.07);
+  --red: #dc2626;
+  --red-bg: rgba(220,38,38,0.06);
+  --violet: #7c3aed;
+  --violet-bg: rgba(124,58,237,0.06);
+
+  --sidebar-w: 264px;
+  --header-h: 64px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --transition: 180ms ease;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--gray-50);
-  color: var(--navy);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background: var(--slate-50);
+  color: var(--slate-900);
   line-height: 1.6;
-  overflow-x: hidden;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ── HEADER ── */
 .header {
   position: fixed; top: 0; left: 0; right: 0; height: var(--header-h);
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  background: var(--slate-900);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 32px; z-index: 100;
-  border-bottom: 2px solid var(--gold);
+  padding: 0 24px 0 24px; z-index: 100;
+  border-bottom: 1px solid var(--slate-700);
 }
-.header-brand { display: flex; align-items: center; gap: 16px; }
+.header-brand { display: flex; align-items: center; gap: 14px; }
 .header-logo {
-  width: 44px; height: 44px; background: var(--gold);
-  border-radius: 10px; display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 20px; color: var(--navy);
+  width: 36px; height: 36px; background: var(--accent);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
 }
-.header-title { color: var(--white); }
-.header-title h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
-.header-title p { font-size: 12px; color: var(--gold-light); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
-.header-meta { text-align: right; color: var(--gray-300); font-size: 12px; }
+.header-logo svg { width: 20px; height: 20px; color: var(--white); }
+.header-title h1 {
+  font-size: 15px; font-weight: 600; color: var(--white);
+  letter-spacing: -0.2px; line-height: 1.3;
+}
+.header-title p {
+  font-size: 11px; color: var(--slate-400); font-weight: 500;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+.header-meta { display: flex; align-items: center; gap: 16px; }
 .header-meta .badge {
-  display: inline-block; background: var(--gold-dim); color: var(--gold);
-  padding: 4px 12px; border-radius: 20px; font-weight: 600; font-size: 11px;
-  letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent-subtle); color: var(--accent);
+  padding: 5px 12px; border-radius: 20px; font-weight: 600; font-size: 11px;
+  letter-spacing: 0.3px; border: 1px solid var(--accent-border);
+}
+.header-meta .badge svg { width: 12px; height: 12px; }
+.header-date {
+  font-size: 12px; color: var(--slate-400); text-align: right; line-height: 1.5;
 }
 
 /* ── SIDEBAR ── */
 .sidebar {
   position: fixed; top: var(--header-h); left: 0; bottom: 0;
   width: var(--sidebar-w); background: var(--white);
-  border-right: 1px solid var(--gray-200); padding: 24px 0;
+  border-right: 1px solid var(--slate-200); padding: 20px 0;
   overflow-y: auto; z-index: 90;
 }
-.sidebar-section { padding: 0 20px; margin-bottom: 8px; }
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--slate-200); border-radius: 2px; }
+.sidebar-section { padding: 0 12px; margin-bottom: 4px; }
 .sidebar-section-title {
-  font-size: 10px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 1.5px; color: var(--gray-400); margin-bottom: 12px; padding: 0 12px;
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.8px; color: var(--slate-400); margin-bottom: 6px;
+  padding: 0 12px;
 }
 .nav-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 12px; border-radius: 8px; cursor: pointer;
-  transition: var(--transition); font-size: 14px; font-weight: 500;
-  color: var(--gray-600); margin-bottom: 2px; border: 1px solid transparent;
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 6px; cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  font-size: 13px; font-weight: 500; color: var(--slate-600);
+  margin-bottom: 1px; border: 1px solid transparent;
+  user-select: none;
 }
-.nav-item:hover { background: var(--gray-100); color: var(--navy); }
+.nav-item:hover { background: var(--slate-100); color: var(--slate-900); }
 .nav-item.active {
-  background: var(--gold-dim); color: var(--navy);
-  border-color: rgba(201,168,76,0.3); font-weight: 600;
+  background: var(--accent-subtle); color: var(--accent-hover);
+  border-color: var(--accent-border); font-weight: 600;
 }
 .nav-icon {
-  width: 32px; height: 32px; border-radius: 8px;
+  width: 28px; height: 28px; border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 16px; flex-shrink: 0;
+  flex-shrink: 0; transition: background var(--transition);
 }
-.nav-item.active .nav-icon { background: var(--gold); color: var(--navy); }
-.nav-item:not(.active) .nav-icon { background: var(--gray-100); }
-.nav-label { flex: 1; }
+.nav-icon svg { width: 16px; height: 16px; }
+.nav-item.active .nav-icon { background: var(--accent); color: var(--white); }
+.nav-item:not(.active) .nav-icon { background: var(--slate-100); color: var(--slate-500); }
+.nav-label { flex: 1; line-height: 1.4; }
+.sidebar-divider { height: 1px; background: var(--slate-100); margin: 12px 24px; }
 
 /* ── MAIN ── */
 .main {
   margin-left: var(--sidebar-w); margin-top: var(--header-h);
-  padding: 32px 40px 60px; min-height: calc(100vh - var(--header-h));
+  padding: 32px 40px 80px; min-height: calc(100vh - var(--header-h));
+  max-width: calc(100% - var(--sidebar-w));
 }
 
 /* ── DEPARTMENT PAGE ── */
-.dept-page { display: none; animation: fadeIn 0.4s ease; }
-.dept-page.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.dept-page { display: none; }
+.dept-page.active { display: block; animation: pageIn 0.3s ease; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-.dept-header { margin-bottom: 32px; }
-.dept-header h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
-.dept-header p { font-size: 15px; color: var(--gray-500); max-width: 700px; }
-.dept-header .dept-badge {
-  display: inline-block; font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px;
-  border-radius: 4px; margin-bottom: 12px;
+.dept-header { margin-bottom: 28px; }
+.dept-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.6px; padding: 4px 10px; border-radius: 4px;
+  margin-bottom: 10px;
+}
+.dept-header h2 {
+  font-size: 24px; font-weight: 700; letter-spacing: -0.5px;
+  margin-bottom: 6px; color: var(--slate-900); line-height: 1.2;
+}
+.dept-header p {
+  font-size: 14px; color: var(--slate-500); max-width: 680px; line-height: 1.7;
 }
 
 /* ── STAT CARDS ── */
-.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin-bottom: 24px;
+}
 .stat-card {
-  background: var(--white); border: 1px solid var(--gray-200);
-  border-radius: 12px; padding: 20px; position: relative; overflow: hidden;
+  background: var(--white); border: 1px solid var(--slate-200);
+  border-radius: var(--radius); padding: 16px 20px;
 }
-.stat-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+.stat-label {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.4px; color: var(--slate-400); margin-bottom: 6px;
 }
-.stat-card.gold::before { background: var(--gold); }
-.stat-card.green::before { background: var(--green); }
-.stat-card.blue::before { background: var(--blue); }
-.stat-card.amber::before { background: var(--amber); }
-.stat-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-400); margin-bottom: 8px; }
-.stat-value { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
-.stat-sub { font-size: 12px; color: var(--gray-500); margin-top: 4px; }
+.stat-value {
+  font-size: 24px; font-weight: 700; letter-spacing: -0.5px;
+  color: var(--slate-900); line-height: 1.2;
+}
+.stat-sub { font-size: 12px; color: var(--slate-500); margin-top: 4px; line-height: 1.4; }
 
-/* ── CONTENT CARDS ── */
-.content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+/* ── CONTENT GRID ── */
+.content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 .content-grid.full { grid-template-columns: 1fr; }
+
+/* ── CARDS ── */
 .card {
-  background: var(--white); border: 1px solid var(--gray-200);
-  border-radius: 12px; overflow: hidden;
+  background: var(--white); border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg); overflow: hidden;
 }
 .card-header {
-  padding: 20px 24px 16px; border-bottom: 1px solid var(--gray-100);
+  padding: 14px 20px; border-bottom: 1px solid var(--slate-100);
   display: flex; align-items: center; justify-content: space-between;
 }
-.card-header h3 { font-size: 16px; font-weight: 700; }
-.card-header .card-badge {
-  font-size: 10px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.8px; padding: 3px 10px; border-radius: 4px;
+.card-header h3 { font-size: 14px; font-weight: 600; color: var(--slate-900); letter-spacing: -0.1px; }
+.card-badge {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+  padding: 3px 8px; border-radius: 4px;
 }
-.card-body { padding: 20px 24px; }
+.card-body { padding: 16px 20px; }
 
 /* ── ACCORDION ── */
-.accordion { border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; margin-bottom: 20px; background: var(--white); }
-.accordion-item { border-bottom: 1px solid var(--gray-100); }
+.accordion {
+  border: 1px solid var(--slate-200); border-radius: var(--radius-lg);
+  overflow: hidden; margin-bottom: 16px; background: var(--white);
+}
+.accordion-item { border-bottom: 1px solid var(--slate-100); }
 .accordion-item:last-child { border-bottom: none; }
 .accordion-trigger {
-  width: 100%; padding: 16px 24px; display: flex; align-items: center;
+  width: 100%; padding: 12px 20px; display: flex; align-items: center;
   justify-content: space-between; background: none; border: none;
-  cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 600;
-  color: var(--navy); text-align: left; transition: var(--transition);
+  cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 600;
+  color: var(--slate-900); text-align: left; transition: background var(--transition);
 }
-.accordion-trigger:hover { background: var(--gray-50); }
+.accordion-trigger:hover { background: var(--slate-50); }
 .accordion-trigger .arrow {
-  transition: transform 0.3s ease; font-size: 12px; color: var(--gray-400);
+  transition: transform 0.2s ease; color: var(--slate-400);
+  display: flex; align-items: center;
 }
+.accordion-trigger .arrow svg { width: 16px; height: 16px; }
 .accordion-item.open .accordion-trigger .arrow { transform: rotate(180deg); }
-.accordion-trigger .trigger-left { display: flex; align-items: center; gap: 12px; }
+.trigger-left { display: flex; align-items: center; gap: 10px; }
 .trigger-icon {
   width: 28px; height: 28px; border-radius: 6px; display: flex;
-  align-items: center; justify-content: center; font-size: 14px;
-  background: var(--gold-dim); color: var(--gold);
+  align-items: center; justify-content: center;
+  background: var(--accent-subtle); color: var(--accent);
 }
-.accordion-content {
-  max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
-}
-.accordion-item.open .accordion-content { max-height: 2000px; }
-.accordion-inner { padding: 0 24px 20px; }
+.trigger-icon svg { width: 14px; height: 14px; }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.accordion-item.open .accordion-content { max-height: 3000px; }
+.accordion-inner { padding: 0 20px 16px; }
 
-/* ── LISTS ── */
+/* ── PROC LISTS ── */
 .proc-list { list-style: none; }
 .proc-list li {
-  padding: 10px 0; border-bottom: 1px solid var(--gray-100);
-  display: flex; align-items: flex-start; gap: 10px; font-size: 14px;
+  padding: 8px 0; border-bottom: 1px solid var(--slate-100);
+  display: flex; align-items: flex-start; gap: 10px; font-size: 13px;
+  line-height: 1.6; color: var(--slate-700);
 }
 .proc-list li:last-child { border-bottom: none; }
 .proc-list .check {
   width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; margin-top: 1px;
+  font-size: 10px; margin-top: 2px; font-weight: 700;
 }
 .proc-list .check.green { background: var(--green-bg); color: var(--green); }
 .proc-list .check.blue { background: var(--blue-bg); color: var(--blue); }
-.proc-list .check.gold { background: var(--gold-dim); color: var(--gold); }
+.proc-list .check.gold { background: var(--accent-subtle); color: var(--accent); }
+.proc-list .check.red { background: var(--red-bg); color: var(--red); }
+.proc-list .check.amber { background: var(--amber-bg); color: var(--amber); }
 
-/* ── WORKFLOW DIAGRAM ── */
-.workflow {
-  display: flex; align-items: stretch; gap: 0; margin: 20px 0;
-  overflow-x: auto; padding-bottom: 8px;
-}
+/* ── WORKFLOW STEPPER ── */
+.workflow { display: flex; align-items: flex-start; gap: 0; margin: 16px 0; overflow-x: auto; }
 .wf-step {
-  flex: 1; min-width: 160px; text-align: center; position: relative;
-  padding: 16px 12px;
+  flex: 1; min-width: 140px; text-align: center; position: relative; padding: 0 8px;
 }
-.wf-step .wf-num {
-  width: 36px; height: 36px; border-radius: 50%; margin: 0 auto 10px;
+.wf-num {
+  width: 32px; height: 32px; border-radius: 50%; margin: 0 auto 8px;
   display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 14px; color: var(--white);
-  background: var(--navy);
+  font-weight: 700; font-size: 13px; color: var(--white);
+  background: var(--slate-900);
 }
-.wf-step .wf-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-.wf-step .wf-desc { font-size: 11px; color: var(--gray-500); line-height: 1.5; }
+.wf-title { font-size: 12px; font-weight: 700; margin-bottom: 4px; color: var(--slate-900); letter-spacing: -0.1px; }
+.wf-desc { font-size: 11px; color: var(--slate-500); line-height: 1.5; }
 .wf-arrow {
-  display: flex; align-items: center; color: var(--gold);
-  font-size: 20px; flex-shrink: 0; padding: 0 4px;
+  display: flex; align-items: center; flex-shrink: 0;
+  padding: 0 2px; margin-top: 6px;
 }
+.wf-arrow svg { width: 20px; height: 20px; color: var(--slate-300); }
 
 /* ── KPI TABLE ── */
 .kpi-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .kpi-table th {
-  text-align: left; padding: 10px 16px; background: var(--gray-50);
-  font-weight: 700; font-size: 11px; text-transform: uppercase;
-  letter-spacing: 0.8px; color: var(--gray-400);
-  border-bottom: 2px solid var(--gray-200);
+  text-align: left; padding: 8px 16px; background: var(--slate-50);
+  font-weight: 600; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--slate-500);
+  border-bottom: 1px solid var(--slate-200);
 }
 .kpi-table td {
-  padding: 12px 16px; border-bottom: 1px solid var(--gray-100);
-  vertical-align: middle;
+  padding: 10px 16px; border-bottom: 1px solid var(--slate-100);
+  vertical-align: middle; color: var(--slate-700);
 }
-.kpi-table tr:hover td { background: var(--gray-50); }
-.kpi-bar-wrap { width: 100%; height: 6px; background: var(--gray-100); border-radius: 3px; overflow: hidden; }
-.kpi-bar { height: 100%; border-radius: 3px; transition: width 1s ease; }
-.kpi-bar.green { background: var(--green); }
-.kpi-bar.gold { background: var(--gold); }
-.kpi-bar.blue { background: var(--blue); }
-.kpi-bar.amber { background: var(--amber); }
+.kpi-table tr:last-child td { border-bottom: none; }
+.kpi-table tr:hover td { background: var(--slate-50); }
 
 /* ── TAGS ── */
 .tag {
-  display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px;
-  border-radius: 4px; margin: 2px 4px 2px 0;
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 600; padding: 3px 8px;
+  border-radius: 4px; margin: 2px 4px 2px 0; letter-spacing: 0.1px;
 }
-.tag.green { background: var(--green-bg); color: #166534; }
-.tag.blue { background: var(--blue-bg); color: #1e40af; }
-.tag.gold { background: var(--gold-dim); color: #92700c; }
-.tag.amber { background: var(--amber-bg); color: #92400e; }
-.tag.red { background: var(--red-bg); color: #991b1b; }
-.tag.navy { background: rgba(15,26,46,0.08); color: var(--navy); }
+.tag.green { background: var(--green-bg); color: #15803d; }
+.tag.blue { background: var(--blue-bg); color: #1d4ed8; }
+.tag.gold { background: var(--accent-subtle); color: var(--accent-hover); }
+.tag.amber { background: var(--amber-bg); color: #b45309; }
+.tag.red { background: var(--red-bg); color: #b91c1c; }
+.tag.slate { background: var(--slate-100); color: var(--slate-600); }
 
 /* ── SCORECARD TABLE ── */
 .sc-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .sc-table th {
-  text-align: left; padding: 8px 12px; background: var(--navy);
-  color: var(--white); font-size: 11px; font-weight: 700;
+  text-align: left; padding: 10px 16px; background: var(--slate-900);
+  color: var(--white); font-size: 11px; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.5px;
 }
-.sc-table td { padding: 8px 12px; border-bottom: 1px solid var(--gray-100); }
+.sc-table td { padding: 9px 16px; border-bottom: 1px solid var(--slate-100); color: var(--slate-700); }
+.sc-table tr:hover td { background: var(--slate-50); }
 .sc-table .section-row td {
-  background: var(--gold-dim); font-weight: 700; font-size: 12px;
-  text-transform: uppercase; letter-spacing: 0.5px; color: var(--navy);
+  background: var(--accent-subtle); font-weight: 700; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.4px; color: var(--accent-hover);
+  padding: 8px 16px;
 }
-.sc-table .weight { text-align: center; font-weight: 700; color: var(--navy); }
+.sc-table .weight { text-align: center; font-weight: 700; color: var(--slate-900); font-variant-numeric: tabular-nums; }
 
 /* ── ORG CHART ── */
-.org-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.org-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; flex-wrap: wrap; }
 .org-card {
-  background: var(--white); border: 1px solid var(--gray-200);
-  border-radius: 10px; padding: 14px 20px; text-align: center; min-width: 180px;
-  position: relative;
+  background: var(--white); border: 1px solid var(--slate-200);
+  border-radius: var(--radius); padding: 14px 20px; text-align: center; min-width: 180px;
 }
-.org-card.primary { border-color: var(--gold); border-width: 2px; }
-.org-card .org-role { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gold); margin-bottom: 4px; }
-.org-card .org-name { font-size: 14px; font-weight: 600; }
-.org-card .org-desc { font-size: 11px; color: var(--gray-500); margin-top: 2px; }
-.org-connector { text-align: center; color: var(--gray-300); margin-bottom: 8px; font-size: 20px; }
+.org-card.primary { border-color: var(--accent); border-width: 2px; }
+.org-card .org-role {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--accent); margin-bottom: 4px;
+}
+.org-card .org-name { font-size: 14px; font-weight: 600; color: var(--slate-900); }
+.org-card .org-desc { font-size: 12px; color: var(--slate-500); margin-top: 4px; line-height: 1.5; }
+.org-connector { text-align: center; color: var(--slate-300); margin-bottom: 6px; font-size: 14px; font-weight: 600; }
 
 /* ── TIMELINE ── */
-.timeline { position: relative; padding-left: 28px; }
+.timeline { position: relative; padding-left: 24px; }
 .timeline::before {
-  content: ''; position: absolute; left: 8px; top: 4px; bottom: 4px;
-  width: 2px; background: var(--gold-dim);
+  content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
+  width: 2px; background: var(--slate-200);
 }
-.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-item { position: relative; margin-bottom: 16px; }
+.timeline-item:last-child { margin-bottom: 0; }
 .timeline-item::before {
-  content: ''; position: absolute; left: -24px; top: 6px;
-  width: 12px; height: 12px; border-radius: 50%;
-  background: var(--gold); border: 3px solid var(--white);
-  box-shadow: 0 0 0 2px var(--gold-dim);
+  content: ''; position: absolute; left: -22px; top: 6px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--white);
+  outline: 2px solid var(--accent-border);
 }
-.timeline-item .tl-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
-.timeline-item .tl-desc { font-size: 13px; color: var(--gray-500); }
+.tl-title { font-size: 13px; font-weight: 700; margin-bottom: 2px; color: var(--slate-900); }
+.tl-desc { font-size: 13px; color: var(--slate-500); line-height: 1.6; }
+
+/* ── KPI BAR ── */
+.kpi-bar-wrap { width: 100%; height: 6px; background: var(--slate-100); border-radius: 3px; overflow: hidden; }
+.kpi-bar { height: 100%; border-radius: 3px; transition: width 1s ease; }
+.kpi-bar.green { background: var(--green); }
+.kpi-bar.gold { background: var(--accent); }
+.kpi-bar.blue { background: var(--blue); }
+.kpi-bar.amber { background: var(--amber); }
 
 /* ── SCREENSHOT GALLERY ── */
-.screenshot-gallery { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 24px; }
+.screenshot-gallery { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
 .screenshot-card {
-  background: var(--white); border: 1px solid var(--gray-200);
-  border-radius: 12px; overflow: hidden; transition: var(--transition);
+  background: var(--white); border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg); overflow: hidden;
   display: flex; flex-direction: row; align-items: stretch;
+  transition: border-color var(--transition);
 }
-.screenshot-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(57,181,74,0.08); }
+.screenshot-card:hover { border-color: var(--slate-300); }
 .screenshot-img-wrap {
   flex: 0 0 420px; max-width: 420px; overflow: hidden;
-  border-right: 1px solid var(--gray-200); cursor: pointer;
+  border-right: 1px solid var(--slate-200); cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  background: var(--gray-50); position: relative;
+  background: var(--slate-50); position: relative;
 }
 .screenshot-img-wrap img {
   width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform 0.3s ease;
   image-rendering: -webkit-optimize-contrast;
 }
-.screenshot-img-wrap:hover img { transform: scale(1.03); }
+.screenshot-img-wrap:hover img { transform: scale(1.02); }
 .screenshot-img-wrap::after {
-  content: '🔍 Click to enlarge'; position: absolute; bottom: 8px; right: 8px;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.3px;
-  background: rgba(0,0,0,0.6); color: #fff; padding: 3px 8px; border-radius: 4px;
+  content: 'View full size'; position: absolute; bottom: 8px; right: 8px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.2px;
+  background: var(--slate-900); color: var(--white); padding: 4px 10px; border-radius: 4px;
   opacity: 0; transition: opacity 0.2s ease; pointer-events: none;
 }
-.screenshot-img-wrap:hover::after { opacity: 1; }
+.screenshot-img-wrap:hover::after { opacity: 0.9; }
 .screenshot-caption {
-  flex: 1; padding: 24px 28px; display: flex; flex-direction: column; justify-content: center;
+  flex: 1; padding: 20px 24px; display: flex; flex-direction: column; justify-content: center;
 }
 .screenshot-caption h4 {
-  font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--navy);
-  display: flex; align-items: center; gap: 10px;
+  font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--slate-900);
+  display: flex; align-items: center; gap: 10px; letter-spacing: -0.1px;
 }
 .screenshot-caption h4 .cap-icon {
-  width: 32px; height: 32px; border-radius: 8px; display: flex;
-  align-items: center; justify-content: center; font-size: 15px;
-  background: var(--gold-dim); color: var(--gold); flex-shrink: 0;
+  width: 28px; height: 28px; border-radius: 6px; display: flex;
+  align-items: center; justify-content: center;
+  background: var(--accent-subtle); color: var(--accent); flex-shrink: 0;
 }
-.screenshot-caption p { font-size: 13px; color: var(--gray-500); line-height: 1.7; margin-bottom: 0; }
-.screenshot-caption .cap-highlights {
-  list-style: none; margin-top: 12px; padding: 0;
+.screenshot-caption h4 .cap-icon svg { width: 14px; height: 14px; }
+.screenshot-caption > p { font-size: 13px; color: var(--slate-500); line-height: 1.7; }
+.cap-highlights { list-style: none; margin-top: 12px; padding: 0; }
+.cap-highlights li {
+  font-size: 13px; color: var(--slate-600); padding: 3px 0;
+  display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
 }
-.screenshot-caption .cap-highlights li {
-  font-size: 13px; color: var(--gray-600); padding: 4px 0;
-  display: flex; align-items: flex-start; gap: 8px;
-}
-.screenshot-caption .cap-highlights li::before {
-  content: '✓'; color: var(--gold); font-weight: 700; font-size: 12px; margin-top: 1px; flex-shrink: 0;
+.cap-highlights li::before {
+  content: ''; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--accent); margin-top: 7px; flex-shrink: 0;
 }
 .screenshot-grid-2 { grid-template-columns: 1fr 1fr; }
-.screenshot-grid-2 .screenshot-card {
-  flex-direction: column;
-}
+.screenshot-grid-2 .screenshot-card { flex-direction: column; }
 .screenshot-grid-2 .screenshot-img-wrap {
   flex: none; max-width: 100%; max-height: 260px;
-  border-right: none; border-bottom: 1px solid var(--gray-200);
+  border-right: none; border-bottom: 1px solid var(--slate-200);
 }
 
 .screenshot-overlay {
   display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.88); z-index: 9999; align-items: center;
+  background: rgba(0,0,0,0.85); z-index: 9999; align-items: center;
   justify-content: center; padding: 40px; cursor: zoom-out;
+  backdrop-filter: blur(4px);
 }
 .screenshot-overlay.visible { display: flex; }
 .screenshot-overlay img {
-  max-width: 90%; max-height: 90vh; border-radius: 8px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  max-width: 92%; max-height: 92vh; border-radius: 8px;
   image-rendering: -webkit-optimize-contrast;
 }
 
-@media (max-width: 1024px) {
-  .screenshot-grid-2 { grid-template-columns: 1fr; }
-  .screenshot-card { flex-direction: column; }
-  .screenshot-img-wrap { flex: none; max-width: 100%; max-height: 300px; border-right: none; border-bottom: 1px solid var(--gray-200); }
+/* ── CALLOUT BOXES ── */
+.callout {
+  padding: 12px 16px; border-radius: var(--radius); font-size: 13px;
+  line-height: 1.6; margin-top: 16px;
 }
+.callout.critical { background: var(--red-bg); color: #991b1b; border: 1px solid rgba(220,38,38,0.12); }
+.callout.info { background: var(--accent-subtle); color: var(--accent-hover); border: 1px solid var(--accent-border); }
+
+/* ── RED FLAG GRID ── */
+.red-flag-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px;
+}
+.red-flag-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13px; color: var(--slate-700); padding: 6px 0;
+  line-height: 1.5;
+}
+.red-flag-item .rf-tag {
+  display: inline-flex; align-items: center; flex-shrink: 0;
+  font-size: 10px; font-weight: 700; padding: 2px 6px;
+  border-radius: 3px; background: var(--red-bg); color: #b91c1c;
+  text-transform: uppercase; letter-spacing: 0.3px; margin-top: 2px;
+}
+
+/* ── WEIGHT DISTRIBUTION ── */
+.weight-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 4px; font-size: 13px; color: var(--slate-700);
+}
+.weight-row .weight-val { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--slate-900); }
 
 /* ── PRINT ── */
 @media print {
-  .sidebar, .header { display: none; }
-  .main { margin: 0; padding: 20px; }
+  .sidebar, .header { display: none !important; }
+  .main { margin: 0 !important; padding: 24px !important; max-width: 100% !important; }
   .dept-page { display: block !important; page-break-before: always; }
-  .card, .accordion { break-inside: avoid; }
+  .dept-page:first-child { page-break-before: auto; }
+  .card, .accordion, .stat-card { break-inside: avoid; }
+  .screenshot-img-wrap::after { display: none; }
+  body { background: white; }
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .content-grid { grid-template-columns: 1fr; }
+  .screenshot-grid-2 { grid-template-columns: 1fr; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .sidebar { transform: translateX(-100%); }
+  .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
   .sidebar.open { transform: translateX(0); }
-  .main { margin-left: 0; }
-  .stats-row { grid-template-columns: 1fr; }
+  .main { margin-left: 0; max-width: 100%; padding: 24px 16px 60px; }
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-value { font-size: 20px; }
+  .header { padding: 0 16px; }
+  .screenshot-card { flex-direction: column; }
+  .screenshot-img-wrap { flex: none; max-width: 100%; max-height: 240px; border-right: none; border-bottom: 1px solid var(--slate-200); }
+  .red-flag-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
+<!-- ═══ SVG ICON DEFINITIONS ═══ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="m9 14 2 2 4-4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><polyline points="1 14 12 3 23 14"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol>
+  <symbol id="i-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="i-bar-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+  <symbol id="i-graduation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z"/><path d="M15 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+</svg>
+
 <!-- ═══ HEADER ═══ -->
 <header class="header">
   <div class="header-brand">
-    <div class="header-logo">H</div>
+    <div class="header-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+    </div>
     <div class="header-title">
       <h1>Humana &times; MyCareClub</h1>
       <p>Compliance & Quality Assurance Framework</p>
     </div>
   </div>
   <div class="header-meta">
-    <div class="badge">Compliance Review Package</div>
-    <div>Effective Date: April 15, 2026 &nbsp;|&nbsp; Review Cycle: Quarterly</div>
+    <div class="badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Compliance Review Package
+    </div>
+    <div class="header-date">
+      <div>Effective April 15, 2026</div>
+      <div>Review Cycle: Quarterly</div>
+    </div>
   </div>
 </header>
 
@@ -415,123 +542,59 @@ body {
   <div class="sidebar-section">
     <div class="sidebar-section-title">Overview</div>
     <div class="nav-item active" onclick="showPage('overview')">
-      <div class="nav-icon">📊</div>
+      <div class="nav-icon"><svg><use href="#i-grid"/></svg></div>
       <span class="nav-label">Executive Summary</span>
     </div>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Departments</div>
-    <div class="nav-item" onclick="showPage('sales')">
-      <div class="nav-icon">📞</div>
-      <span class="nav-label">Sales</span>
-    </div>
-    <div class="nav-item" onclick="showPage('cs')">
-      <div class="nav-icon">🤝</div>
-      <span class="nav-label">Customer Service</span>
-    </div>
-    <div class="nav-item" onclick="showPage('qa')">
-      <div class="nav-icon">🔍</div>
-      <span class="nav-label">Quality Assurance</span>
-    </div>
-    <div class="nav-item" onclick="showPage('compliance')">
-      <div class="nav-icon">🛡️</div>
-      <span class="nav-label">Compliance</span>
-    </div>
-    <div class="nav-item" onclick="showPage('hr')">
-      <div class="nav-icon">👥</div>
-      <span class="nav-label">Human Resources</span>
-    </div>
-    <div class="nav-item" onclick="showPage('ops')">
-      <div class="nav-icon">⚙️</div>
-      <span class="nav-label">Operations</span>
-    </div>
-    <div class="nav-item" onclick="showPage('tech')">
-      <div class="nav-icon">💻</div>
-      <span class="nav-label">Technology (PolicyDen)</span>
-    </div>
-    <div class="nav-item" onclick="showPage('legal')">
-      <div class="nav-icon">⚖️</div>
-      <span class="nav-label">Legal</span>
-    </div>
+    <div class="nav-item" onclick="showPage('sales')"><div class="nav-icon"><svg><use href="#i-phone"/></svg></div><span class="nav-label">Sales</span></div>
+    <div class="nav-item" onclick="showPage('cs')"><div class="nav-icon"><svg><use href="#i-headset"/></svg></div><span class="nav-label">Customer Service</span></div>
+    <div class="nav-item" onclick="showPage('qa')"><div class="nav-icon"><svg><use href="#i-clipboard"/></svg></div><span class="nav-label">Quality Assurance</span></div>
+    <div class="nav-item" onclick="showPage('compliance')"><div class="nav-icon"><svg><use href="#i-shield"/></svg></div><span class="nav-label">Compliance</span></div>
+    <div class="nav-item" onclick="showPage('hr')"><div class="nav-icon"><svg><use href="#i-users"/></svg></div><span class="nav-label">Human Resources</span></div>
+    <div class="nav-item" onclick="showPage('ops')"><div class="nav-icon"><svg><use href="#i-settings"/></svg></div><span class="nav-label">Operations</span></div>
+    <div class="nav-item" onclick="showPage('tech')"><div class="nav-icon"><svg><use href="#i-monitor"/></svg></div><span class="nav-label">Technology (PolicyDen)</span></div>
+    <div class="nav-item" onclick="showPage('legal')"><div class="nav-icon"><svg><use href="#i-scale"/></svg></div><span class="nav-label">Legal</span></div>
   </div>
-  <div class="sidebar-section" style="margin-top:24px;">
+  <div class="sidebar-divider"></div>
+  <div class="sidebar-section">
     <div class="sidebar-section-title">Documents</div>
-    <div class="nav-item" onclick="showPage('scorecard')">
-      <div class="nav-icon">📋</div>
-      <span class="nav-label">QA Scorecard</span>
-    </div>
-    <div class="nav-item" onclick="showPage('ctm')">
-      <div class="nav-icon">📉</div>
-      <span class="nav-label">CTM Mitigation Plan</span>
-    </div>
+    <div class="nav-item" onclick="showPage('scorecard')"><div class="nav-icon"><svg><use href="#i-list"/></svg></div><span class="nav-label">QA Scorecard</span></div>
+    <div class="nav-item" onclick="showPage('ctm')"><div class="nav-icon"><svg><use href="#i-trending"/></svg></div><span class="nav-label">CTM Mitigation Plan</span></div>
   </div>
 </nav>
 
 <!-- ═══ MAIN CONTENT ═══ -->
 <main class="main">
 
-<!-- ════════════════════ EXECUTIVE SUMMARY ════════════════════ -->
+<!-- ════ EXECUTIVE SUMMARY ════ -->
 <div class="dept-page active" id="page-overview">
   <div class="dept-header">
-    <div class="dept-badge" style="background:var(--gold-dim);color:var(--gold);">Agency-Wide Framework</div>
+    <div class="dept-badge" style="background:var(--accent-subtle);color:var(--accent);">Agency-Wide Framework</div>
     <h2>Executive Summary</h2>
     <p>MyCareClub's end-to-end compliance, quality assurance, and member experience framework across all operational departments. This document serves as a comprehensive overview of our organizational controls, procedures, and continuous improvement infrastructure.</p>
   </div>
 
   <div class="stats-row">
-    <div class="stat-card gold">
-      <div class="stat-label">Departments Covered</div>
-      <div class="stat-value">8</div>
-      <div class="stat-sub">Full organizational coverage</div>
-    </div>
-    <div class="stat-card green">
-      <div class="stat-value" style="font-size:22px;">100%</div>
-      <div class="stat-label" style="margin-bottom:0;margin-top:8px;">Enrollment QA Review Rate</div>
-      <div class="stat-sub">Every MA/MAPD enrollment scored</div>
-    </div>
-    <div class="stat-card blue">
-      <div class="stat-value" style="font-size:22px;">3-Day</div>
-      <div class="stat-label" style="margin-bottom:0;margin-top:8px;">Post-Enrollment Outreach</div>
-      <div class="stat-sub">All new enrollees contacted</div>
-    </div>
-    <div class="stat-card amber">
-      <div class="stat-value" style="font-size:22px;">24hr</div>
-      <div class="stat-label" style="margin-bottom:0;margin-top:8px;">Grievance Response SLA</div>
-      <div class="stat-sub">Carrier complaints reviewed same day</div>
-    </div>
+    <div class="stat-card"><div class="stat-label">Departments Covered</div><div class="stat-value">8</div><div class="stat-sub">Full organizational coverage</div></div>
+    <div class="stat-card"><div class="stat-label">Enrollment QA Review Rate</div><div class="stat-value">100%</div><div class="stat-sub">Every MA/MAPD enrollment scored</div></div>
+    <div class="stat-card"><div class="stat-label">Post-Enrollment Outreach</div><div class="stat-value">3-Day</div><div class="stat-sub">All new enrollees contacted</div></div>
+    <div class="stat-card"><div class="stat-label">Grievance Response SLA</div><div class="stat-value">24hr</div><div class="stat-sub">Carrier complaints reviewed same day</div></div>
   </div>
 
   <div class="content-grid full">
     <div class="card">
-      <div class="card-header">
-        <h3>Three-Pillar CTM Reduction Strategy</h3>
-        <span class="card-badge" style="background:var(--gold-dim);color:var(--gold);">Core Framework</span>
-      </div>
+      <div class="card-header"><h3>Three-Pillar CTM Reduction Strategy</h3><span class="card-badge" style="background:var(--accent-subtle);color:var(--accent);">Core Framework</span></div>
       <div class="card-body">
         <div class="workflow">
-          <div class="wf-step">
-            <div class="wf-num">1</div>
-            <div class="wf-title">Pre-Enrollment QA</div>
-            <div class="wf-desc">100% scorecard review, compliance risk flags, CX scoring, CTM risk tagging</div>
-          </div>
-          <div class="wf-arrow">→</div>
-          <div class="wf-step">
-            <div class="wf-num">2</div>
-            <div class="wf-title">Post-Enrollment CS</div>
-            <div class="wf-desc">3-day outreach, 2-tier licensed support, 3-tier escalation, CRM documentation</div>
-          </div>
-          <div class="wf-arrow">→</div>
-          <div class="wf-step">
-            <div class="wf-num">3</div>
-            <div class="wf-title">Agent Performance</div>
-            <div class="wf-desc">Notion dashboards, progressive discipline, proactive coaching, monthly scorecards</div>
-          </div>
-          <div class="wf-arrow">→</div>
-          <div class="wf-step">
-            <div class="wf-num" style="background:var(--gold);">✓</div>
-            <div class="wf-title">CTM Prevention</div>
-            <div class="wf-desc">Closed-loop system — every potential complaint intercepted before reaching carrier</div>
-          </div>
+          <div class="wf-step"><div class="wf-num">1</div><div class="wf-title">Pre-Enrollment QA</div><div class="wf-desc">100% scorecard review, compliance risk flags, CX scoring, CTM risk tagging</div></div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
+          <div class="wf-step"><div class="wf-num">2</div><div class="wf-title">Post-Enrollment CS</div><div class="wf-desc">3-day outreach, 2-tier licensed support, 3-tier escalation, CRM documentation</div></div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
+          <div class="wf-step"><div class="wf-num">3</div><div class="wf-title">Agent Performance</div><div class="wf-desc">Notion dashboards, progressive discipline, proactive coaching, monthly scorecards</div></div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
+          <div class="wf-step"><div class="wf-num" style="background:var(--accent);">&#10003;</div><div class="wf-title">CTM Prevention</div><div class="wf-desc">Closed-loop system — every potential complaint intercepted before reaching carrier</div></div>
         </div>
       </div>
     </div>
@@ -542,14 +605,14 @@ body {
       <div class="card-header"><h3>Department Responsibilities</h3></div>
       <div class="card-body">
         <ul class="proc-list">
-          <li><span class="check green">✓</span><span><strong>Sales</strong> — Needs-based enrollment, CMS-compliant call handling, election period verification</span></li>
-          <li><span class="check green">✓</span><span><strong>Customer Service</strong> — Post-enrollment retention, member issue resolution, escalation management</span></li>
-          <li><span class="check green">✓</span><span><strong>Quality Assurance</strong> — Independent call evaluation, scorecard grading, compliance risk identification</span></li>
-          <li><span class="check green">✓</span><span><strong>Compliance</strong> — CTM mitigation, grievance handling, corrective action plans, carrier liaison</span></li>
-          <li><span class="check green">✓</span><span><strong>Human Resources</strong> — Licensed agent hiring, onboarding, credentialing, continuing education</span></li>
-          <li><span class="check green">✓</span><span><strong>Operations</strong> — Technology infrastructure, data security, call recording, CRM management</span></li>
-          <li><span class="check green">✓</span><span><strong>Technology</strong> — PolicyDen CRM platform, enrollment lifecycle management, automated compliance workflows, audit trail</span></li>
-          <li><span class="check green">✓</span><span><strong>Legal</strong> — Regulatory monitoring, contract management, HIPAA/privacy, carrier compliance</span></li>
+          <li><span class="check green">&#10003;</span><span><strong>Sales</strong> — Needs-based enrollment, CMS-compliant call handling, election period verification</span></li>
+          <li><span class="check green">&#10003;</span><span><strong>Customer Service</strong> — Post-enrollment retention, member issue resolution, escalation management</span></li>
+          <li><span class="check green">&#10003;</span><span><strong>Quality Assurance</strong> — Independent call evaluation, scorecard grading, compliance risk identification</span></li>
+          <li><span class="check green">&#10003;</span><span><strong>Compliance</strong> — CTM mitigation, grievance handling, corrective action plans, carrier liaison</span></li>
+          <li><span class="check green">&#10003;</span><span><strong>Human Resources</strong> — Licensed agent hiring, onboarding, credentialing, continuing education</span></li>
+          <li><span class="check green">&#10003;</span><span><strong>Operations</strong> — Technology infrastructure, data security, call recording, CRM management</span></li>
+          <li><span class="check green">&#10003;</span><span><strong>Technology</strong> — PolicyDen CRM platform, enrollment lifecycle management, automated compliance workflows, audit trail</span></li>
+          <li><span class="check green">&#10003;</span><span><strong>Legal</strong> — Regulatory monitoring, contract management, HIPAA/privacy, carrier compliance</span></li>
         </ul>
       </div>
     </div>
@@ -557,368 +620,314 @@ body {
       <div class="card-header"><h3>Compliance Infrastructure</h3></div>
       <div class="card-body">
         <ul class="proc-list">
-          <li><span class="check gold">★</span><span><strong>Centralized Agent Dashboard</strong> — Notion-based performance tracking with QA scores, CTM counts, compliance flags, and trend analysis</span></li>
-          <li><span class="check gold">★</span><span><strong>Standardized QA Scorecard</strong> — 42-criterion weighted evaluation covering opening, needs assessment, benefits, application, and closing</span></li>
-          <li><span class="check gold">★</span><span><strong>Progressive Discipline Protocol</strong> — 5-stage escalation from coaching through termination with full documentation at every stage</span></li>
-          <li><span class="check gold">★</span><span><strong>AEP/OEP Elevated Protocols</strong> — Enhanced review cadence, shortened outreach windows, and weekly CTM monitoring during peak enrollment</span></li>
-          <li><span class="check gold">★</span><span><strong>Closed-Loop Grievance System</strong> — Every carrier complaint auto-routes to agent record, triggers QA review, and feeds back into coaching</span></li>
+          <li><span class="check gold">&#9733;</span><span><strong>Centralized Agent Dashboard</strong> — Notion-based performance tracking with QA scores, CTM counts, compliance flags, and trend analysis</span></li>
+          <li><span class="check gold">&#9733;</span><span><strong>Standardized QA Scorecard</strong> — 42-criterion weighted evaluation covering opening, needs assessment, benefits, application, and closing</span></li>
+          <li><span class="check gold">&#9733;</span><span><strong>Progressive Discipline Protocol</strong> — 5-stage escalation from coaching through termination with full documentation at every stage</span></li>
+          <li><span class="check gold">&#9733;</span><span><strong>AEP/OEP Elevated Protocols</strong> — Enhanced review cadence, shortened outreach windows, and weekly CTM monitoring during peak enrollment</span></li>
+          <li><span class="check gold">&#9733;</span><span><strong>Closed-Loop Grievance System</strong> — Every carrier complaint auto-routes to agent record, triggers QA review, and feeds back into coaching</span></li>
         </ul>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ SALES ════════════════════ -->
+<!-- ════ SALES ════ -->
 <div class="dept-page" id="page-sales">
   <div class="dept-header">
-    <div class="dept-badge" style="background:var(--green-bg);color:#166534;">Department</div>
+    <div class="dept-badge" style="background:var(--green-bg);color:#15803d;">Department</div>
     <h2>Sales</h2>
     <p>Licensed Medicare Advantage and MAPD enrollment operations. Every sales interaction follows CMS-mandated procedures, carrier-specific requirements, and MyCareClub's internal quality standards to protect members and maintain carrier standing.</p>
   </div>
 
   <div class="stats-row">
-    <div class="stat-card green"><div class="stat-label">QA Review Rate</div><div class="stat-value">100%</div><div class="stat-sub">Every enrollment scored</div></div>
-    <div class="stat-card gold"><div class="stat-label">Scorecard Criteria</div><div class="stat-value">42</div><div class="stat-sub">Weighted compliance checks</div></div>
-    <div class="stat-card blue"><div class="stat-label">SOA Compliance</div><div class="stat-value">&lt;2 min</div><div class="stat-sub">Read within 2 min of call</div></div>
-    <div class="stat-card amber"><div class="stat-label">Red Flag Indicators</div><div class="stat-value">17</div><div class="stat-sub">Auto-fail criteria monitored</div></div>
+    <div class="stat-card"><div class="stat-label">QA Review Rate</div><div class="stat-value">100%</div><div class="stat-sub">Every enrollment scored</div></div>
+    <div class="stat-card"><div class="stat-label">Scorecard Criteria</div><div class="stat-value">42</div><div class="stat-sub">Weighted compliance checks</div></div>
+    <div class="stat-card"><div class="stat-label">SOA Compliance</div><div class="stat-value">&lt;2 min</div><div class="stat-sub">Read within 2 min of call</div></div>
+    <div class="stat-card"><div class="stat-label">Red Flag Indicators</div><div class="stat-value">17</div><div class="stat-sub">Auto-fail criteria monitored</div></div>
   </div>
 
   <div class="accordion">
     <div class="accordion-item open">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📋</span> CMS-Compliant Call Flow</span>
-        <span class="arrow">▼</span>
+        <span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-list"/></svg></span> CMS-Compliant Call Flow</span>
+        <span class="arrow"><svg><use href="#i-chevron"/></svg></span>
       </button>
       <div class="accordion-content"><div class="accordion-inner">
-        <p style="font-size:14px;color:var(--gray-500);margin-bottom:16px;">Every MA/MAPD enrollment call follows this standardized sequence. Deviation from any step is flagged by QA and may trigger a Corrective Action Plan.</p>
+        <p style="font-size:13px;color:var(--slate-500);margin-bottom:16px;">Every MA/MAPD enrollment call follows this standardized sequence. Deviation from any step is flagged by QA and may trigger a Corrective Action Plan.</p>
         <div class="workflow">
           <div class="wf-step"><div class="wf-num">1</div><div class="wf-title">Opening & ID</div><div class="wf-desc">Full name, licensed agent disclosure, call recording notice, permission to call back</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">2</div><div class="wf-title">SOA & TPMO</div><div class="wf-desc">Scope of Appointment read within 2 minutes. "No obligation to enroll" read before benefits.</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">3</div><div class="wf-title">Eligibility</div><div class="wf-desc">Health decision-maker or POA confirmed. Other coverage check (Medicaid, TRICARE, VA, employer).</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">4</div><div class="wf-title">MARx Verification</div><div class="wf-desc">Permission obtained before accessing Medicare/Medicaid/LIS eligibility systems.</div></div>
         </div>
-        <div class="workflow" style="margin-top:0;">
+        <div class="workflow" style="margin-top:4px;">
           <div class="wf-step"><div class="wf-num">5</div><div class="wf-title">Needs Assessment</div><div class="wf-desc">PCP, specialists, hospital (in/out network). Medications: name, dose, quantity, formulary, tiers, pharmacy.</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">6</div><div class="wf-title">Benefits Review</div><div class="wf-desc">Plan name, premium, deductibles, MOOP, giveback, copays, dental/hearing/vision/OTC.</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">7</div><div class="wf-title">Application</div><div class="wf-desc">Recording consent, election period verification, full disclosures read, verbal consent (name, DOB, "I agree").</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">8</div><div class="wf-title">Closing</div><div class="wf-desc">Confirmation number, mailing timeframe, carrier & MyCareClub CS numbers provided.</div></div>
         </div>
       </div></div>
     </div>
-
     <div class="accordion-item">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🛑</span> Prohibited Practices & Red Flags</span>
-        <span class="arrow">▼</span>
+        <span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-alert"/></svg></span> Prohibited Practices & Red Flags</span>
+        <span class="arrow"><svg><use href="#i-chevron"/></svg></span>
       </button>
       <div class="accordion-content"><div class="accordion-inner">
-        <p style="font-size:14px;color:var(--gray-500);margin-bottom:16px;">Any of the following triggers an automatic <strong>-40 point</strong> penalty on the QA scorecard and immediate compliance escalation. Single-incident violations may result in a CAP regardless of overall score.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-          <div><span class="tag red">Red Flag</span> Accessing beneficiary information without consent</div>
-          <div><span class="tag red">Red Flag</span> Enrollment attempt without beneficiary consent</div>
-          <div><span class="tag red">Red Flag</span> Enrollment through unauthorized third party</div>
-          <div><span class="tag red">Red Flag</span> Enrollment without required POA presence</div>
-          <div><span class="tag red">Red Flag</span> Misrepresenting as Medicare/CMS representative</div>
-          <div><span class="tag red">Red Flag</span> Misrepresentation of application purpose</div>
-          <div><span class="tag red">Red Flag</span> Beneficiary not informed of enrollment application</div>
-          <div><span class="tag red">Red Flag</span> Improper SEP use</div>
-          <div><span class="tag red">Red Flag</span> Overly aggressive sales tactics</div>
-          <div><span class="tag red">Red Flag</span> Selling using Free Look period</div>
-          <div><span class="tag red">Red Flag</span> Outbound marketing violations</div>
-          <div><span class="tag red">Red Flag</span> No permission to call back</div>
-          <div><span class="tag red">Red Flag</span> Unnecessary plan switch</div>
-          <div><span class="tag red">Red Flag</span> Medicaid presented as stand-alone coverage</div>
-          <div><span class="tag red">Red Flag</span> Part B Giveback timeframe not disclosed</div>
-          <div><span class="tag red">Red Flag</span> C-SNP PCP confirmation not explained</div>
-          <div><span class="tag red">Red Flag</span> Self-enrollment by cognitively impaired beneficiary</div>
+        <p style="font-size:13px;color:var(--slate-500);margin-bottom:16px;">Any of the following triggers an automatic <strong>&minus;40 point</strong> penalty on the QA scorecard and immediate compliance escalation. Single-incident violations may result in a CAP regardless of overall score.</p>
+        <div class="red-flag-grid">
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Accessing beneficiary information without consent</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Enrollment attempt without beneficiary consent</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Enrollment through unauthorized third party</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Enrollment without required POA presence</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Misrepresenting as Medicare/CMS representative</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Misrepresentation of application purpose</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Beneficiary not informed of enrollment application</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Improper SEP use</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Overly aggressive sales tactics</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Selling using Free Look period</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Outbound marketing violations</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> No permission to call back</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Unnecessary plan switch</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Medicaid presented as stand-alone coverage</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Part B Giveback timeframe not disclosed</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> C-SNP PCP confirmation not explained</div>
+          <div class="red-flag-item"><span class="rf-tag">Red Flag</span> Self-enrollment by cognitively impaired beneficiary</div>
         </div>
       </div></div>
     </div>
-
     <div class="accordion-item">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📊</span> Needs-Based Selling Standards</span>
-        <span class="arrow">▼</span>
+        <span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-bar-chart"/></svg></span> Needs-Based Selling Standards</span>
+        <span class="arrow"><svg><use href="#i-chevron"/></svg></span>
       </button>
       <div class="accordion-content"><div class="accordion-inner">
         <ul class="proc-list">
-          <li><span class="check green">✓</span><span>Agents must actively identify beneficiary's priority healthcare needs before presenting any plan</span></li>
-          <li><span class="check green">✓</span><span>Plans presented objectively — no steering, no high-pressure language, no bias toward higher-commission products</span></li>
-          <li><span class="check green">✓</span><span>All questions and concerns addressed transparently to build trust with the beneficiary</span></li>
-          <li><span class="check green">✓</span><span>Agent must confirm beneficiary clearly understands the plan benefits discussed before proceeding to application</span></li>
-          <li><span class="check green">✓</span><span>Coverage impact explained: disenrollment consequences, coordination of benefits, penalties, TRICARE/VA interactions</span></li>
-          <li><span class="check green">✓</span><span>Professional, respectful, neutral tone maintained throughout — no urgency or scarcity tactics</span></li>
-          <li><span class="check green">✓</span><span>MAPD enrollments: formulary, pharmacy network, cost-sharing, tier levels, and non-formulary drugs explicitly addressed</span></li>
+          <li><span class="check green">&#10003;</span><span>Agents must actively identify beneficiary's priority healthcare needs before presenting any plan</span></li>
+          <li><span class="check green">&#10003;</span><span>Plans presented objectively — no steering, no high-pressure language, no bias toward higher-commission products</span></li>
+          <li><span class="check green">&#10003;</span><span>All questions and concerns addressed transparently to build trust with the beneficiary</span></li>
+          <li><span class="check green">&#10003;</span><span>Agent must confirm beneficiary clearly understands the plan benefits discussed before proceeding to application</span></li>
+          <li><span class="check green">&#10003;</span><span>Coverage impact explained: disenrollment consequences, coordination of benefits, penalties, TRICARE/VA interactions</span></li>
+          <li><span class="check green">&#10003;</span><span>Professional, respectful, neutral tone maintained throughout — no urgency or scarcity tactics</span></li>
+          <li><span class="check green">&#10003;</span><span>MAPD enrollments: formulary, pharmacy network, cost-sharing, tier levels, and non-formulary drugs explicitly addressed</span></li>
         </ul>
       </div></div>
     </div>
-
     <div class="accordion-item">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📅</span> Election Period Verification</span>
-        <span class="arrow">▼</span>
+        <span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-calendar"/></svg></span> Election Period Verification</span>
+        <span class="arrow"><svg><use href="#i-chevron"/></svg></span>
       </button>
       <div class="accordion-content"><div class="accordion-inner">
         <ul class="proc-list">
-          <li><span class="check blue">●</span><span><strong>AEP (Oct 15 – Dec 7)</strong> — Standard enrollment window. Enhanced QA protocols active. Same-day scorecard turnaround first 2 weeks.</span></li>
-          <li><span class="check blue">●</span><span><strong>MA-OEP (Jan 1 – Mar 31)</strong> — Plan-to-plan switches only for existing MA enrollees. No Original Medicare election. Agent must verify current MA enrollment.</span></li>
-          <li><span class="check blue">●</span><span><strong>SEPs</strong> — Agent must document valid qualifying event. Improper SEP use is a Red Flag indicator triggering automatic compliance escalation.</span></li>
-          <li><span class="check blue">●</span><span><strong>IEP / ICEP</strong> — Initial enrollment periods verified through MARx. Part A/B effective dates confirmed before proceeding.</span></li>
-          <li><span class="check blue">●</span><span>All election period determinations are subject to QA review. Invalid election periods result in immediate enrollment rejection and agent coaching.</span></li>
+          <li><span class="check blue">&#8226;</span><span><strong>AEP (Oct 15 – Dec 7)</strong> — Standard enrollment window. Enhanced QA protocols active. Same-day scorecard turnaround first 2 weeks.</span></li>
+          <li><span class="check blue">&#8226;</span><span><strong>MA-OEP (Jan 1 – Mar 31)</strong> — Plan-to-plan switches only for existing MA enrollees. No Original Medicare election. Agent must verify current MA enrollment.</span></li>
+          <li><span class="check blue">&#8226;</span><span><strong>SEPs</strong> — Agent must document valid qualifying event. Improper SEP use is a Red Flag indicator triggering automatic compliance escalation.</span></li>
+          <li><span class="check blue">&#8226;</span><span><strong>IEP / ICEP</strong> — Initial enrollment periods verified through MARx. Part A/B effective dates confirmed before proceeding.</span></li>
+          <li><span class="check blue">&#8226;</span><span>All election period determinations are subject to QA review. Invalid election periods result in immediate enrollment rejection and agent coaching.</span></li>
         </ul>
       </div></div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ CUSTOMER SERVICE ════════════════════ -->
+<!-- ════ CUSTOMER SERVICE ════ -->
 <div class="dept-page" id="page-cs">
   <div class="dept-header">
-    <div class="dept-badge" style="background:var(--blue-bg);color:#1e40af;">Department</div>
+    <div class="dept-badge" style="background:var(--blue-bg);color:#1d4ed8;">Department</div>
     <h2>Customer Service</h2>
     <p>Two-tier licensed support structure serving as the operational bridge between members, agents, and carriers. Our CS team proactively prevents member dissatisfaction from escalating to carrier complaints through rapid response, documented outreach, and structured escalation.</p>
   </div>
-
   <div class="stats-row">
-    <div class="stat-card green"><div class="stat-label">Post-Enrollment Outreach</div><div class="stat-value">3 Days</div><div class="stat-sub">All new enrollees contacted</div></div>
-    <div class="stat-card blue"><div class="stat-label">Escalation Tiers</div><div class="stat-value">3</div><div class="stat-sub">Rep → Supervisor → Compliance</div></div>
-    <div class="stat-card gold"><div class="stat-label">CRM Documentation</div><div class="stat-value">Same Day</div><div class="stat-sub">Every interaction logged</div></div>
-    <div class="stat-card amber"><div class="stat-label">SMS Auto-Escalation</div><div class="stat-value">Same Day</div><div class="stat-sub">Unresolved threads escalated</div></div>
+    <div class="stat-card"><div class="stat-label">Post-Enrollment Outreach</div><div class="stat-value">3 Days</div><div class="stat-sub">All new enrollees contacted</div></div>
+    <div class="stat-card"><div class="stat-label">Escalation Tiers</div><div class="stat-value">3</div><div class="stat-sub">Rep &rarr; Supervisor &rarr; Compliance</div></div>
+    <div class="stat-card"><div class="stat-label">CRM Documentation</div><div class="stat-value">Same Day</div><div class="stat-sub">Every interaction logged</div></div>
+    <div class="stat-card"><div class="stat-label">SMS Auto-Escalation</div><div class="stat-value">Same Day</div><div class="stat-sub">Unresolved threads escalated</div></div>
   </div>
-
   <div class="content-grid">
     <div class="card">
-      <div class="card-header"><h3>Organizational Structure</h3><span class="card-badge" style="background:var(--blue-bg);color:#1e40af;">Two-Tier Licensed</span></div>
+      <div class="card-header"><h3>Organizational Structure</h3><span class="card-badge" style="background:var(--blue-bg);color:#1d4ed8;">Two-Tier Licensed</span></div>
       <div class="card-body">
-        <div class="org-row">
-          <div class="org-card primary">
-            <div class="org-role">Level 2 — Advanced</div>
-            <div class="org-name">Licensed + Medicare-Certified CSRs</div>
-            <div class="org-desc">Complex issue resolution, benefit confusion, provider network disputes, plan dissatisfaction, proactive retention</div>
-          </div>
-        </div>
-        <div class="org-connector">↑ Escalation</div>
-        <div class="org-row">
-          <div class="org-card">
-            <div class="org-role">Level 1 — Frontline</div>
-            <div class="org-name">Licensed CSRs</div>
-            <div class="org-desc">Routine inquiries, ID cards, effective dates, basic benefit questions, call routing, CRM documentation</div>
-          </div>
-        </div>
+        <div class="org-row"><div class="org-card primary"><div class="org-role">Level 2 — Advanced</div><div class="org-name">Licensed + Medicare-Certified CSRs</div><div class="org-desc">Complex issue resolution, benefit confusion, provider network disputes, plan dissatisfaction, proactive retention</div></div></div>
+        <div class="org-connector">&uarr; Escalation</div>
+        <div class="org-row"><div class="org-card"><div class="org-role">Level 1 — Frontline</div><div class="org-name">Licensed CSRs</div><div class="org-desc">Routine inquiries, ID cards, effective dates, basic benefit questions, call routing, CRM documentation</div></div></div>
       </div>
     </div>
-
     <div class="card">
-      <div class="card-header"><h3>3-Tier Escalation Framework</h3><span class="card-badge" style="background:var(--amber-bg);color:#92400e;">Critical</span></div>
+      <div class="card-header"><h3>3-Tier Escalation Framework</h3><span class="card-badge" style="background:var(--amber-bg);color:#b45309;">Critical</span></div>
       <div class="card-body">
         <div class="timeline">
-          <div class="timeline-item">
-            <div class="tl-title">Tier 1 — Representative Resolution</div>
-            <div class="tl-desc">CSR attempts to resolve the member's concern directly. Full CRM documentation of the issue, actions taken, and outcome. Target: resolve at first contact.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-title">Tier 2 — Supervisor De-Escalation</div>
-            <div class="tl-desc">If unresolved, supervisor takes over with authority to offer remediation. Member receives callback commitment within 2 hours. Issue tracked in escalation log.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-title">Tier 3 — Compliance / Formal Grievance</div>
-            <div class="tl-desc">Complex or regulatory-sensitive complaints route to Compliance. Formal grievance process initiated. Carrier notified if required. Full audit trail maintained.</div>
-          </div>
+          <div class="timeline-item"><div class="tl-title">Tier 1 — Representative Resolution</div><div class="tl-desc">CSR attempts to resolve the member's concern directly. Full CRM documentation of the issue, actions taken, and outcome. Target: resolve at first contact.</div></div>
+          <div class="timeline-item"><div class="tl-title">Tier 2 — Supervisor De-Escalation</div><div class="tl-desc">If unresolved, supervisor takes over with authority to offer remediation. Member receives callback commitment within 2 hours. Issue tracked in escalation log.</div></div>
+          <div class="timeline-item"><div class="tl-title">Tier 3 — Compliance / Formal Grievance</div><div class="tl-desc">Complex or regulatory-sensitive complaints route to Compliance. Formal grievance process initiated. Carrier notified if required. Full audit trail maintained.</div></div>
         </div>
-        <div style="margin-top:16px;padding:12px 16px;background:var(--red-bg);border-radius:8px;font-size:13px;">
-          <strong>Rule:</strong> No MA or MAPD complaint reaches a carrier unaddressed. Every escalation is documented with timestamps, actions, and resolution status.
-        </div>
+        <div class="callout critical" style="margin-top:16px;"><strong>Rule:</strong> No MA or MAPD complaint reaches a carrier unaddressed. Every escalation is documented with timestamps, actions, and resolution status.</div>
       </div>
     </div>
   </div>
-
   <div class="accordion">
     <div class="accordion-item open">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📱</span> Post-Enrollment Outreach Protocol</span>
-        <span class="arrow">▼</span>
-      </button>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-message"/></svg></span> Post-Enrollment Outreach Protocol</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
       <div class="accordion-content"><div class="accordion-inner">
         <ul class="proc-list">
-          <li><span class="check green">✓</span><span>All new MA/MAPD enrollees receive SMS or call within <strong>3 business days</strong> confirming plan understanding, effective date, and PCP</span></li>
-          <li><span class="check green">✓</span><span>MAPD enrollees: pharmacy and drug coverage specifically re-confirmed during outreach</span></li>
-          <li><span class="check green">✓</span><span>High-risk enrollments flagged for priority <strong>24-hour outreach</strong>: significant coverage changes, dual-eligible, complex drug regimens</span></li>
-          <li><span class="check green">✓</span><span>AEP enrollments involving plan change from prior year: outreach window shortened to <strong>24 hours</strong></span></li>
-          <li><span class="check green">✓</span><span>All unresolved SMS threads older than same business day auto-escalated to supervisor</span></li>
-          <li><span class="check green">✓</span><span>Every outreach interaction documented in CRM with timestamp, topics covered, member response, and follow-up actions</span></li>
+          <li><span class="check green">&#10003;</span><span>All new MA/MAPD enrollees receive SMS or call within <strong>3 business days</strong> confirming plan understanding, effective date, and PCP</span></li>
+          <li><span class="check green">&#10003;</span><span>MAPD enrollees: pharmacy and drug coverage specifically re-confirmed during outreach</span></li>
+          <li><span class="check green">&#10003;</span><span>High-risk enrollments flagged for priority <strong>24-hour outreach</strong>: significant coverage changes, dual-eligible, complex drug regimens</span></li>
+          <li><span class="check green">&#10003;</span><span>AEP enrollments involving plan change from prior year: outreach window shortened to <strong>24 hours</strong></span></li>
+          <li><span class="check green">&#10003;</span><span>All unresolved SMS threads older than same business day auto-escalated to supervisor</span></li>
+          <li><span class="check green">&#10003;</span><span>Every outreach interaction documented in CRM with timestamp, topics covered, member response, and follow-up actions</span></li>
         </ul>
       </div></div>
     </div>
-
     <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📝</span> Documentation Standards</span>
-        <span class="arrow">▼</span>
-      </button>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-file-text"/></svg></span> Documentation Standards</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
       <div class="accordion-content"><div class="accordion-inner">
         <ul class="proc-list">
-          <li><span class="check blue">●</span><span>Every member interaction logged in CRM same day — no exceptions</span></li>
-          <li><span class="check blue">●</span><span>Documentation includes: member name, issue category, actions taken, resolution status, follow-up required (Y/N), and timestamp</span></li>
-          <li><span class="check blue">●</span><span>Escalation events include supervisor notes, timeline commitments to member, and compliance notification if applicable</span></li>
-          <li><span class="check blue">●</span><span>Records retained for required retention period and available for carrier or CMS audits on demand</span></li>
+          <li><span class="check blue">&#8226;</span><span>Every member interaction logged in CRM same day — no exceptions</span></li>
+          <li><span class="check blue">&#8226;</span><span>Documentation includes: member name, issue category, actions taken, resolution status, follow-up required (Y/N), and timestamp</span></li>
+          <li><span class="check blue">&#8226;</span><span>Escalation events include supervisor notes, timeline commitments to member, and compliance notification if applicable</span></li>
+          <li><span class="check blue">&#8226;</span><span>Records retained for required retention period and available for carrier or CMS audits on demand</span></li>
         </ul>
       </div></div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ QUALITY ASSURANCE ════════════════════ -->
+<!-- ════ QA ════ -->
 <div class="dept-page" id="page-qa">
   <div class="dept-header">
-    <div class="dept-badge" style="background:var(--amber-bg);color:#92400e;">Department</div>
+    <div class="dept-badge" style="background:var(--amber-bg);color:#b45309;">Department</div>
     <h2>Quality Assurance</h2>
     <p>Independent control function responsible for monitoring, evaluating, and documenting agent interactions. QA operates under strict governance — it does not interpret policy, approve enrollments, or submit external responses. Evaluations are objective, standardized, and fully audit-defensible.</p>
   </div>
-
   <div class="stats-row">
-    <div class="stat-card gold"><div class="stat-label">Scorecard Criteria</div><div class="stat-value">42</div><div class="stat-sub">Weighted evaluation checkpoints</div></div>
-    <div class="stat-card green"><div class="stat-label">Review Turnaround</div><div class="stat-value">1–2 Days</div><div class="stat-sub">Same-day during AEP</div></div>
-    <div class="stat-card blue"><div class="stat-label">CX Scoring Dimensions</div><div class="stat-value">6</div><div class="stat-sub">0–3 scale, coaching only</div></div>
-    <div class="stat-card amber"><div class="stat-label">Red Flag Penalty</div><div class="stat-value">–40 pts</div><div class="stat-sub">Automatic compliance escalation</div></div>
+    <div class="stat-card"><div class="stat-label">Scorecard Criteria</div><div class="stat-value">42</div><div class="stat-sub">Weighted evaluation checkpoints</div></div>
+    <div class="stat-card"><div class="stat-label">Review Turnaround</div><div class="stat-value">1&ndash;2 Days</div><div class="stat-sub">Same-day during AEP</div></div>
+    <div class="stat-card"><div class="stat-label">CX Scoring Dimensions</div><div class="stat-value">6</div><div class="stat-sub">0&ndash;3 scale, coaching only</div></div>
+    <div class="stat-card"><div class="stat-label">Red Flag Penalty</div><div class="stat-value">&minus;40 pts</div><div class="stat-sub">Automatic compliance escalation</div></div>
   </div>
-
   <div class="content-grid">
     <div class="card">
-      <div class="card-header"><h3>Scoring Methodology</h3><span class="card-badge" style="background:var(--gold-dim);color:var(--gold);">Non-Discretionary</span></div>
+      <div class="card-header"><h3>Scoring Methodology</h3><span class="card-badge" style="background:var(--accent-subtle);color:var(--accent);">Non-Discretionary</span></div>
       <div class="card-body">
         <ul class="proc-list">
-          <li><span class="check gold">★</span><span>All criteria are <strong>predefined and fixed</strong> — QA analysts cannot introduce new scoring standards</span></li>
-          <li><span class="check gold">★</span><span>A call is only marked failed when a <strong>specific, predefined failure criterion</strong> is met</span></li>
-          <li><span class="check gold">★</span><span>Compliance risk flags are documented <strong>independently</strong> of pass/fail scorecard outcomes</span></li>
-          <li><span class="check gold">★</span><span>Consumer Experience scoring is <strong>completely separate</strong> from compliance pass/fail — used for coaching only</span></li>
+          <li><span class="check gold">&#9733;</span><span>All criteria are <strong>predefined and fixed</strong> — QA analysts cannot introduce new scoring standards</span></li>
+          <li><span class="check gold">&#9733;</span><span>A call is only marked failed when a <strong>specific, predefined failure criterion</strong> is met</span></li>
+          <li><span class="check gold">&#9733;</span><span>Compliance risk flags are documented <strong>independently</strong> of pass/fail scorecard outcomes</span></li>
+          <li><span class="check gold">&#9733;</span><span>Consumer Experience scoring is <strong>completely separate</strong> from compliance pass/fail — used for coaching only</span></li>
         </ul>
         <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
-          <span class="tag green">Exceptional: 96–100%</span>
-          <span class="tag blue">Acceptable: 80–95%</span>
+          <span class="tag green">Exceptional: 96&ndash;100%</span>
+          <span class="tag blue">Acceptable: 80&ndash;95%</span>
           <span class="tag amber">Unacceptable: &lt;80%</span>
           <span class="tag red">Compliance Risk: &lt;70%</span>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-header"><h3>Consumer Experience (CX) Scoring</h3><span class="card-badge" style="background:var(--blue-bg);color:#1e40af;">Coaching Tool</span></div>
+      <div class="card-header"><h3>Consumer Experience (CX) Scoring</h3><span class="card-badge" style="background:var(--blue-bg);color:#1d4ed8;">Coaching Tool</span></div>
       <div class="card-body">
         <table class="kpi-table">
-          <thead><tr><th>Dimension</th><th>Scale</th></tr></thead>
+          <thead><tr><th>Dimension</th><th style="width:60px;text-align:center;">Scale</th></tr></thead>
           <tbody>
-            <tr><td>Needs Identification & Active Listening</td><td>0–3</td></tr>
-            <tr><td>Needs-Based Presentation</td><td>0–3</td></tr>
-            <tr><td>Trust & Question Handling</td><td>0–3</td></tr>
-            <tr><td>Comprehension Confirmation</td><td>0–3</td></tr>
-            <tr><td>Coverage Impact Explanation</td><td>0–3</td></tr>
-            <tr><td>Tone, Professionalism & Neutrality</td><td>0–3</td></tr>
+            <tr><td>Needs Identification & Active Listening</td><td style="text-align:center;font-weight:600;">0&ndash;3</td></tr>
+            <tr><td>Needs-Based Presentation</td><td style="text-align:center;font-weight:600;">0&ndash;3</td></tr>
+            <tr><td>Trust & Question Handling</td><td style="text-align:center;font-weight:600;">0&ndash;3</td></tr>
+            <tr><td>Comprehension Confirmation</td><td style="text-align:center;font-weight:600;">0&ndash;3</td></tr>
+            <tr><td>Coverage Impact Explanation</td><td style="text-align:center;font-weight:600;">0&ndash;3</td></tr>
+            <tr><td>Tone, Professionalism & Neutrality</td><td style="text-align:center;font-weight:600;">0&ndash;3</td></tr>
           </tbody>
         </table>
-        <div style="margin-top:12px;padding:10px 14px;background:var(--gray-50);border-radius:8px;font-size:12px;color:var(--gray-500);">
-          CX scoring does <strong>not</strong> override scorecard results or determine compliance failure status. It is strictly used for performance development and identifying coaching opportunities.
-        </div>
+        <div style="margin-top:12px;padding:10px 14px;background:var(--slate-50);border-radius:6px;font-size:12px;color:var(--slate-500);line-height:1.6;">CX scoring does <strong>not</strong> override scorecard results or determine compliance failure status. It is strictly used for performance development and identifying coaching opportunities.</div>
       </div>
     </div>
   </div>
-
   <div class="accordion">
     <div class="accordion-item open">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🔄</span> QA Workflow & Process Controls</span>
-        <span class="arrow">▼</span>
-      </button>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-refresh"/></svg></span> QA Workflow & Process Controls</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
       <div class="accordion-content"><div class="accordion-inner">
         <div class="workflow">
           <div class="wf-step"><div class="wf-num">1</div><div class="wf-title">Call Review</div><div class="wf-desc">Full end-to-end evaluation of recorded interaction</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">2</div><div class="wf-title">Scorecard</div><div class="wf-desc">Objective scoring on 42 predefined criteria</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">3</div><div class="wf-title">Documentation</div><div class="wf-desc">Structured summary of findings and risk areas</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">4</div><div class="wf-title">Risk ID</div><div class="wf-desc">CMS/compliance flags documented separately</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">5</div><div class="wf-title">Escalation</div><div class="wf-desc">Risk flags routed through compliance chain</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">6</div><div class="wf-title">Feedback</div><div class="wf-desc">Coaching insights for agent improvement</div></div>
         </div>
       </div></div>
     </div>
-
     <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🔒</span> Governance & Boundaries</span>
-        <span class="arrow">▼</span>
-      </button>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-lock"/></svg></span> Governance & Boundaries</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
       <div class="accordion-content"><div class="accordion-inner">
         <ul class="proc-list">
-          <li><span class="check blue">●</span><span>QA operates within a <strong>controlled scope</strong> and does not create policy</span></li>
-          <li><span class="check blue">●</span><span>QA does <strong>not</strong> approve enrollments or determine eligibility</span></li>
-          <li><span class="check blue">●</span><span>QA does <strong>not</strong> submit external carrier or CMS responses</span></li>
-          <li><span class="check blue">●</span><span>QA does <strong>not</strong> engage in carrier communication</span></li>
-          <li><span class="check blue">●</span><span>All compliance risks escalated through formal chain of command</span></li>
-          <li><span class="check blue">●</span><span>Low-scoring or high-risk cases may undergo secondary QA leadership review</span></li>
-          <li><span class="check blue">●</span><span>All records retained for audit readiness and regulatory review</span></li>
+          <li><span class="check blue">&#8226;</span><span>QA operates within a <strong>controlled scope</strong> and does not create policy</span></li>
+          <li><span class="check blue">&#8226;</span><span>QA does <strong>not</strong> approve enrollments or determine eligibility</span></li>
+          <li><span class="check blue">&#8226;</span><span>QA does <strong>not</strong> submit external carrier or CMS responses</span></li>
+          <li><span class="check blue">&#8226;</span><span>QA does <strong>not</strong> engage in carrier communication</span></li>
+          <li><span class="check blue">&#8226;</span><span>All compliance risks escalated through formal chain of command</span></li>
+          <li><span class="check blue">&#8226;</span><span>Low-scoring or high-risk cases may undergo secondary QA leadership review</span></li>
+          <li><span class="check blue">&#8226;</span><span>All records retained for audit readiness and regulatory review</span></li>
         </ul>
       </div></div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ COMPLIANCE ════════════════════ -->
+<!-- ════ COMPLIANCE ════ -->
 <div class="dept-page" id="page-compliance">
   <div class="dept-header">
-    <div class="dept-badge" style="background:var(--red-bg);color:#991b1b;">Department</div>
+    <div class="dept-badge" style="background:var(--red-bg);color:#b91c1c;">Department</div>
     <h2>Compliance</h2>
     <p>Central enforcement and monitoring function responsible for CTM mitigation, grievance management, corrective action plans, agent performance oversight, and carrier relationship compliance. Compliance owns the closed-loop system that prevents member dissatisfaction from escalating to formal complaints.</p>
   </div>
-
   <div class="stats-row">
-    <div class="stat-card gold"><div class="stat-label">Grievance Review SLA</div><div class="stat-value">24hr</div><div class="stat-sub">QA review within 1 business day</div></div>
-    <div class="stat-card green"><div class="stat-label">Agent Dashboard</div><div class="stat-value">Notion</div><div class="stat-sub">Centralized performance tracking</div></div>
-    <div class="stat-card blue"><div class="stat-label">CAP Monitoring</div><div class="stat-value">90 Days</div><div class="stat-sub">Heightened review period</div></div>
-    <div class="stat-card amber"><div class="stat-label">Discipline Stages</div><div class="stat-value">5</div><div class="stat-sub">Progressive protocol</div></div>
+    <div class="stat-card"><div class="stat-label">Grievance Review SLA</div><div class="stat-value">24hr</div><div class="stat-sub">QA review within 1 business day</div></div>
+    <div class="stat-card"><div class="stat-label">Agent Dashboard</div><div class="stat-value">Notion</div><div class="stat-sub">Centralized performance tracking</div></div>
+    <div class="stat-card"><div class="stat-label">CAP Monitoring</div><div class="stat-value">90 Days</div><div class="stat-sub">Heightened review period</div></div>
+    <div class="stat-card"><div class="stat-label">Discipline Stages</div><div class="stat-value">5</div><div class="stat-sub">Progressive protocol</div></div>
   </div>
-
   <div class="content-grid full">
     <div class="card">
-      <div class="card-header"><h3>Corrective Action Plan (CAP) Process</h3><span class="card-badge" style="background:var(--red-bg);color:#991b1b;">Enforcement</span></div>
+      <div class="card-header"><h3>Corrective Action Plan (CAP) Process</h3><span class="card-badge" style="background:var(--red-bg);color:#b91c1c;">Enforcement</span></div>
       <div class="card-body">
         <div class="workflow">
           <div class="wf-step"><div class="wf-num">1</div><div class="wf-title">Proactive Coaching</div><div class="wf-desc">1-on-1 session with agent and Team Lead. Targeted training on specific compliance gap. Occurs before formal CAP when possible.</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">2</div><div class="wf-title">Verbal Warning</div><div class="wf-desc">Documented verbal warning. Agent informed of specific violation and expectations. Performance improvement timeline set.</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">3</div><div class="wf-title">Written CAP</div><div class="wf-desc">Formal corrective action plan. Next 10-15 enrollments get priority QA review. Weekly Team Lead check-ins. 90-day monitoring.</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">4</div><div class="wf-title">Final Warning</div><div class="wf-desc">Last-chance written warning. Mandatory compliance re-certification. Daily QA review. Risk of termination communicated clearly.</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num" style="background:var(--red);">5</div><div class="wf-title">Termination</div><div class="wf-desc">Agent removed from all carrier hierarchies within 24 hours. Access revoked. Documentation retained for audit.</div></div>
         </div>
-        <div style="margin-top:16px;padding:12px 16px;background:var(--gold-dim);border-radius:8px;font-size:13px;">
-          <strong>Exception:</strong> Single-incident major violations (missing consent, misrepresentation, formulary fraud) bypass progressive steps and trigger immediate CAP issuance regardless of prior record.
-        </div>
+        <div class="callout info"><strong>Exception:</strong> Single-incident major violations (missing consent, misrepresentation, formulary fraud) bypass progressive steps and trigger immediate CAP issuance regardless of prior record.</div>
       </div>
     </div>
   </div>
-
   <div class="content-grid">
     <div class="card">
       <div class="card-header"><h3>Agent Performance Dashboard</h3></div>
       <div class="card-body">
-        <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px;">Centralized Notion dashboard tracking the following metrics per agent, reviewed monthly by Compliance Manager:</p>
+        <p style="font-size:13px;color:var(--slate-500);margin-bottom:12px;">Centralized Notion dashboard tracking the following metrics per agent, reviewed monthly by Compliance Manager:</p>
         <ul class="proc-list">
-          <li><span class="check gold">★</span><span>Total MA/MAPD policies written (rolling 90-day window)</span></li>
-          <li><span class="check gold">★</span><span>CTM count and CTM rate (%) against policy volume</span></li>
-          <li><span class="check gold">★</span><span>90-day CTM trend (increasing / stable / decreasing)</span></li>
-          <li><span class="check gold">★</span><span>Rapid disenrollment rate (members who disenroll within 90 days)</span></li>
-          <li><span class="check gold">★</span><span>QA scorecard average and compliance flag count</span></li>
-          <li><span class="check gold">★</span><span>Active CAP status and monitoring milestones</span></li>
+          <li><span class="check gold">&#9733;</span><span>Total MA/MAPD policies written (rolling 90-day window)</span></li>
+          <li><span class="check gold">&#9733;</span><span>CTM count and CTM rate (%) against policy volume</span></li>
+          <li><span class="check gold">&#9733;</span><span>90-day CTM trend (increasing / stable / decreasing)</span></li>
+          <li><span class="check gold">&#9733;</span><span>Rapid disenrollment rate (members who disenroll within 90 days)</span></li>
+          <li><span class="check gold">&#9733;</span><span>QA scorecard average and compliance flag count</span></li>
+          <li><span class="check gold">&#9733;</span><span>Active CAP status and monitoring milestones</span></li>
         </ul>
       </div>
     </div>
@@ -926,133 +935,91 @@ body {
       <div class="card-header"><h3>Grievance Handling Workflow</h3></div>
       <div class="card-body">
         <div class="timeline">
-          <div class="timeline-item">
-            <div class="tl-title">Carrier complaint or CTM received</div>
-            <div class="tl-desc">Auto-routes to agent's performance record in Notion. Compliance Manager notified immediately.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-title">QA Review initiated (within 24 hours)</div>
-            <div class="tl-desc">Full call evaluation using standardized scorecard. Compliance risk flags documented separately. CX scoring completed.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-title">Root cause documented</div>
-            <div class="tl-desc">Structured summary: enrollment flow, key compliance checkpoints, identified risks, member experience indicators.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-title">Response & remediation</div>
-            <div class="tl-desc">Agent receives written feedback. CAP triggered if warranted. Lessons learned shared with agent and Team Lead.</div>
-          </div>
+          <div class="timeline-item"><div class="tl-title">Carrier complaint or CTM received</div><div class="tl-desc">Auto-routes to agent's performance record in Notion. Compliance Manager notified immediately.</div></div>
+          <div class="timeline-item"><div class="tl-title">QA Review initiated (within 24 hours)</div><div class="tl-desc">Full call evaluation using standardized scorecard. Compliance risk flags documented separately. CX scoring completed.</div></div>
+          <div class="timeline-item"><div class="tl-title">Root cause documented</div><div class="tl-desc">Structured summary: enrollment flow, key compliance checkpoints, identified risks, member experience indicators.</div></div>
+          <div class="timeline-item"><div class="tl-title">Response & remediation</div><div class="tl-desc">Agent receives written feedback. CAP triggered if warranted. Lessons learned shared with agent and Team Lead.</div></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ HR ════════════════════ -->
+<!-- ════ HR ════ -->
 <div class="dept-page" id="page-hr">
   <div class="dept-header">
-    <div class="dept-badge" style="background:rgba(139,92,246,0.1);color:#6d28d9;">Department</div>
+    <div class="dept-badge" style="background:var(--violet-bg);color:#6d28d9;">Department</div>
     <h2>Human Resources</h2>
     <p>Responsible for recruiting, credentialing, onboarding, continuing education, and performance management of all licensed agents and support staff. HR ensures every individual representing MyCareClub meets state licensing, carrier certification, and CMS training requirements before engaging with any beneficiary.</p>
   </div>
-
   <div class="stats-row">
-    <div class="stat-card gold"><div class="stat-label">Licensing Requirement</div><div class="stat-value">100%</div><div class="stat-sub">Active state license required</div></div>
-    <div class="stat-card green"><div class="stat-label">Carrier Certification</div><div class="stat-value">Annual</div><div class="stat-sub">AHIP + carrier-specific</div></div>
-    <div class="stat-card blue"><div class="stat-label">Background Check</div><div class="stat-value">Pre-Hire</div><div class="stat-sub">Required for all agents</div></div>
-    <div class="stat-card amber"><div class="stat-label">Onboarding Program</div><div class="stat-value">Structured</div><div class="stat-sub">Compliance-first training</div></div>
+    <div class="stat-card"><div class="stat-label">Licensing Requirement</div><div class="stat-value">100%</div><div class="stat-sub">Active state license required</div></div>
+    <div class="stat-card"><div class="stat-label">Carrier Certification</div><div class="stat-value">Annual</div><div class="stat-sub">AHIP + carrier-specific</div></div>
+    <div class="stat-card"><div class="stat-label">Background Check</div><div class="stat-value">Pre-Hire</div><div class="stat-sub">Required for all agents</div></div>
+    <div class="stat-card"><div class="stat-label">Onboarding Program</div><div class="stat-value">Structured</div><div class="stat-sub">Compliance-first training</div></div>
   </div>
-
   <div class="accordion">
     <div class="accordion-item open">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📄</span> Hiring & Credentialing Standards</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check green">✓</span><span>Active state health insurance license verified before any carrier appointment is initiated</span></li>
-          <li><span class="check green">✓</span><span>Background check completed pre-hire — criminal history, prior regulatory actions, and carrier termination history reviewed</span></li>
-          <li><span class="check green">✓</span><span>AHIP Medicare certification completed and verified annually before AEP</span></li>
-          <li><span class="check green">✓</span><span>Carrier-specific certifications completed for each product line the agent will sell (Humana, UHC, Aetna, etc.)</span></li>
-          <li><span class="check green">✓</span><span>E&O (Errors & Omissions) insurance coverage verified active before first enrollment</span></li>
-          <li><span class="check green">✓</span><span>NPN (National Producer Number) validated against NIPR database</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-file-text"/></svg></span> Hiring & Credentialing Standards</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check green">&#10003;</span><span>Active state health insurance license verified before any carrier appointment is initiated</span></li>
+        <li><span class="check green">&#10003;</span><span>Background check completed pre-hire — criminal history, prior regulatory actions, and carrier termination history reviewed</span></li>
+        <li><span class="check green">&#10003;</span><span>AHIP Medicare certification completed and verified annually before AEP</span></li>
+        <li><span class="check green">&#10003;</span><span>Carrier-specific certifications completed for each product line the agent will sell (Humana, UHC, Aetna, etc.)</span></li>
+        <li><span class="check green">&#10003;</span><span>E&O (Errors & Omissions) insurance coverage verified active before first enrollment</span></li>
+        <li><span class="check green">&#10003;</span><span>NPN (National Producer Number) validated against NIPR database</span></li>
+      </ul></div></div>
     </div>
-
     <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🎓</span> Onboarding & Training Program</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check blue">●</span><span><strong>Week 1:</strong> CMS regulatory framework, MyCareClub Compliance SOP, prohibited practices, and required disclosures</span></li>
-          <li><span class="check blue">●</span><span><strong>Week 1:</strong> Carrier-specific product training — plan benefits, formularies, network structures, and enrollment procedures</span></li>
-          <li><span class="check blue">●</span><span><strong>Week 2:</strong> QA scorecard walkthrough — every criterion reviewed with pass/fail examples from real (anonymized) calls</span></li>
-          <li><span class="check blue">●</span><span><strong>Week 2:</strong> Live call shadowing with senior agent. New hire observes minimum 10 enrollment calls before taking live calls.</span></li>
-          <li><span class="check blue">●</span><span><strong>Week 3:</strong> Supervised live calls with real-time QA monitoring. Every enrollment scored. Immediate coaching on deviations.</span></li>
-          <li><span class="check blue">●</span><span><strong>Ongoing:</strong> Monthly compliance refresher modules. Mandatory re-certification before AEP if returning from inactive status.</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-graduation"/></svg></span> Onboarding & Training Program</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check blue">&#8226;</span><span><strong>Week 1:</strong> CMS regulatory framework, MyCareClub Compliance SOP, prohibited practices, and required disclosures</span></li>
+        <li><span class="check blue">&#8226;</span><span><strong>Week 1:</strong> Carrier-specific product training — plan benefits, formularies, network structures, and enrollment procedures</span></li>
+        <li><span class="check blue">&#8226;</span><span><strong>Week 2:</strong> QA scorecard walkthrough — every criterion reviewed with pass/fail examples from real (anonymized) calls</span></li>
+        <li><span class="check blue">&#8226;</span><span><strong>Week 2:</strong> Live call shadowing with senior agent. New hire observes minimum 10 enrollment calls before taking live calls.</span></li>
+        <li><span class="check blue">&#8226;</span><span><strong>Week 3:</strong> Supervised live calls with real-time QA monitoring. Every enrollment scored. Immediate coaching on deviations.</span></li>
+        <li><span class="check blue">&#8226;</span><span><strong>Ongoing:</strong> Monthly compliance refresher modules. Mandatory re-certification before AEP if returning from inactive status.</span></li>
+      </ul></div></div>
     </div>
-
     <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📊</span> Continuing Education & Compliance Maintenance</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check gold">★</span><span>State CE credits tracked and verified — no agent operates with an expired or lapsed license</span></li>
-          <li><span class="check gold">★</span><span>Annual AHIP re-certification required. Completion tracked in HR system. Non-compliant agents suspended from sales.</span></li>
-          <li><span class="check gold">★</span><span>Carrier certification renewals tracked per product line and per plan year</span></li>
-          <li><span class="check gold">★</span><span>Quarterly compliance training sessions mandatory for all agents — attendance documented</span></li>
-          <li><span class="check gold">★</span><span>Agents returning from inactive status complete full compliance re-certification before any live enrollment activity</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-book"/></svg></span> Continuing Education & Compliance Maintenance</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check gold">&#9733;</span><span>State CE credits tracked and verified — no agent operates with an expired or lapsed license</span></li>
+        <li><span class="check gold">&#9733;</span><span>Annual AHIP re-certification required. Completion tracked in HR system. Non-compliant agents suspended from sales.</span></li>
+        <li><span class="check gold">&#9733;</span><span>Carrier certification renewals tracked per product line and per plan year</span></li>
+        <li><span class="check gold">&#9733;</span><span>Quarterly compliance training sessions mandatory for all agents — attendance documented</span></li>
+        <li><span class="check gold">&#9733;</span><span>Agents returning from inactive status complete full compliance re-certification before any live enrollment activity</span></li>
+      </ul></div></div>
     </div>
-
     <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🚪</span> Offboarding & Carrier Removal</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check blue">●</span><span>Terminated agents removed from <strong>all carrier hierarchies within 24 hours</strong></span></li>
-          <li><span class="check blue">●</span><span>System access (CRM, dialer, enrollment platforms) revoked immediately upon termination</span></li>
-          <li><span class="check blue">●</span><span>Termination documented with cause, supporting evidence, and compliance review outcome</span></li>
-          <li><span class="check blue">●</span><span>Active book of business reassigned with member notification as required by carrier agreements</span></li>
-          <li><span class="check blue">●</span><span>Termination records retained for required period and available for carrier/CMS audit</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-door"/></svg></span> Offboarding & Carrier Removal</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check blue">&#8226;</span><span>Terminated agents removed from <strong>all carrier hierarchies within 24 hours</strong></span></li>
+        <li><span class="check blue">&#8226;</span><span>System access (CRM, dialer, enrollment platforms) revoked immediately upon termination</span></li>
+        <li><span class="check blue">&#8226;</span><span>Termination documented with cause, supporting evidence, and compliance review outcome</span></li>
+        <li><span class="check blue">&#8226;</span><span>Active book of business reassigned with member notification as required by carrier agreements</span></li>
+        <li><span class="check blue">&#8226;</span><span>Termination records retained for required period and available for carrier/CMS audit</span></li>
+      </ul></div></div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ OPERATIONS ════════════════════ -->
+<!-- ════ OPERATIONS ════ -->
 <div class="dept-page" id="page-ops">
   <div class="dept-header">
-    <div class="dept-badge" style="background:rgba(14,165,233,0.1);color:#0369a1;">Department</div>
+    <div class="dept-badge" style="background:rgba(14,165,233,0.08);color:#0369a1;">Department</div>
     <h2>Operations</h2>
     <p>Technology infrastructure, data management, call recording, CRM administration, and workflow automation. Operations maintains the systems that enable every other department to function with auditability, reliability, and security.</p>
   </div>
-
   <div class="stats-row">
-    <div class="stat-card gold"><div class="stat-label">Call Recording</div><div class="stat-value">100%</div><div class="stat-sub">All calls recorded and retained</div></div>
-    <div class="stat-card green"><div class="stat-label">CRM Platform</div><div class="stat-value">PolicyDen</div><div class="stat-sub">Centralized member & policy records</div></div>
-    <div class="stat-card blue"><div class="stat-label">Dialer</div><div class="stat-value">Convoso</div><div class="stat-sub">Compliant outbound/inbound</div></div>
-    <div class="stat-card amber"><div class="stat-label">Agent Tracking</div><div class="stat-value">Notion</div><div class="stat-sub">Performance dashboards</div></div>
+    <div class="stat-card"><div class="stat-label">Call Recording</div><div class="stat-value">100%</div><div class="stat-sub">All calls recorded and retained</div></div>
+    <div class="stat-card"><div class="stat-label">CRM Platform</div><div class="stat-value">PolicyDen</div><div class="stat-sub">Centralized member & policy records</div></div>
+    <div class="stat-card"><div class="stat-label">Dialer</div><div class="stat-value">Convoso</div><div class="stat-sub">Compliant outbound/inbound</div></div>
+    <div class="stat-card"><div class="stat-label">Agent Tracking</div><div class="stat-value">Notion</div><div class="stat-sub">Performance dashboards</div></div>
   </div>
-
   <div class="accordion">
     <div class="accordion-item open">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🖥️</span> Technology Stack</span>
-        <span class="arrow">▼</span>
-      </button>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-server"/></svg></span> Technology Stack</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
       <div class="accordion-content"><div class="accordion-inner">
         <table class="kpi-table">
           <thead><tr><th>System</th><th>Function</th><th>Compliance Role</th></tr></thead>
@@ -1066,256 +1033,169 @@ body {
         </table>
       </div></div>
     </div>
-
     <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📞</span> Call Recording & Retention</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check green">✓</span><span><strong>100% of calls recorded</strong> — both inbound and outbound, across all campaigns and queues</span></li>
-          <li><span class="check green">✓</span><span>Recordings retained for minimum period required by CMS regulations and carrier agreements</span></li>
-          <li><span class="check green">✓</span><span>Recordings accessible to QA team for scorecard evaluation and compliance review</span></li>
-          <li><span class="check green">✓</span><span>Recordings retrievable for carrier or CMS audit requests within 24 hours</span></li>
-          <li><span class="check green">✓</span><span>Call metadata (duration, disposition, agent, campaign, timestamp) stored and queryable for compliance reporting</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-phone"/></svg></span> Call Recording & Retention</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check green">&#10003;</span><span><strong>100% of calls recorded</strong> — both inbound and outbound, across all campaigns and queues</span></li>
+        <li><span class="check green">&#10003;</span><span>Recordings retained for minimum period required by CMS regulations and carrier agreements</span></li>
+        <li><span class="check green">&#10003;</span><span>Recordings accessible to QA team for scorecard evaluation and compliance review</span></li>
+        <li><span class="check green">&#10003;</span><span>Recordings retrievable for carrier or CMS audit requests within 24 hours</span></li>
+        <li><span class="check green">&#10003;</span><span>Call metadata (duration, disposition, agent, campaign, timestamp) stored and queryable for compliance reporting</span></li>
+      </ul></div></div>
     </div>
-
     <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🔐</span> Data Security & Access Controls</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check blue">●</span><span>Role-based access controls (RBAC) across all systems — agents, supervisors, QA, compliance, and admin have distinct permission levels</span></li>
-          <li><span class="check blue">●</span><span>PHI/PII access restricted to licensed personnel with active carrier appointments</span></li>
-          <li><span class="check blue">●</span><span>MARx access controlled — agents must obtain verbal permission before accessing beneficiary eligibility data</span></li>
-          <li><span class="check blue">●</span><span>System access revoked within 24 hours of agent termination or status change</span></li>
-          <li><span class="check blue">●</span><span>Data encryption in transit and at rest for all member-facing systems</span></li>
-          <li><span class="check blue">●</span><span>Audit logs maintained for all system access and data modifications</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-lock"/></svg></span> Data Security & Access Controls</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check blue">&#8226;</span><span>Role-based access controls (RBAC) across all systems — agents, supervisors, QA, compliance, and admin have distinct permission levels</span></li>
+        <li><span class="check blue">&#8226;</span><span>PHI/PII access restricted to licensed personnel with active carrier appointments</span></li>
+        <li><span class="check blue">&#8226;</span><span>MARx access controlled — agents must obtain verbal permission before accessing beneficiary eligibility data</span></li>
+        <li><span class="check blue">&#8226;</span><span>System access revoked within 24 hours of agent termination or status change</span></li>
+        <li><span class="check blue">&#8226;</span><span>Data encryption in transit and at rest for all member-facing systems</span></li>
+        <li><span class="check blue">&#8226;</span><span>Audit logs maintained for all system access and data modifications</span></li>
+      </ul></div></div>
     </div>
-
     <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🔄</span> Automated Reporting & Monitoring</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check gold">★</span><span><strong>Hourly automated sales reports</strong> posted to Slack — call volume, success rates, deals closed, marketing spend, and agent rankings</span></li>
-          <li><span class="check gold">★</span><span>Daily aggregation of call data, disposition analysis, and agent productivity metrics</span></li>
-          <li><span class="check gold">★</span><span>Cross-system data integration: Convoso (calls) + PolicyDen (deals) + WeGenerate (marketing spend) unified in single reporting layer</span></li>
-          <li><span class="check gold">★</span><span>Anomaly detection for unusual patterns: spike in specific dispositions, rapid disenrollments, or agent-level CTM clusters</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-activity"/></svg></span> Automated Reporting & Monitoring</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check gold">&#9733;</span><span><strong>Hourly automated sales reports</strong> posted to Slack — call volume, success rates, deals closed, marketing spend, and agent rankings</span></li>
+        <li><span class="check gold">&#9733;</span><span>Daily aggregation of call data, disposition analysis, and agent productivity metrics</span></li>
+        <li><span class="check gold">&#9733;</span><span>Cross-system data integration: Convoso (calls) + PolicyDen (deals) + WeGenerate (marketing spend) unified in single reporting layer</span></li>
+        <li><span class="check gold">&#9733;</span><span>Anomaly detection for unusual patterns: spike in specific dispositions, rapid disenrollments, or agent-level CTM clusters</span></li>
+      </ul></div></div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ TECHNOLOGY ════════════════════ -->
+<!-- ════ TECHNOLOGY ════ -->
 <div class="dept-page" id="page-tech">
   <div class="dept-header">
-    <div class="dept-badge" style="background:rgba(16,185,129,0.1);color:#065f46;">Department</div>
+    <div class="dept-badge" style="background:rgba(16,185,129,0.08);color:#065f46;">Department</div>
     <h2>Technology — PolicyDen CRM</h2>
     <p>MyCareClub's enrollment lifecycle, member communications, compliance tracking, and agent performance management are centralized in PolicyDen — a purpose-built CRM for Medicare Advantage operations. Every policy, text message, status change, and workflow action is documented with a full audit trail.</p>
   </div>
-
   <div class="stats-row">
-    <div class="stat-card gold"><div class="stat-label">CRM Platform</div><div class="stat-value">PolicyDen</div><div class="stat-sub">Centralized enrollment & compliance system</div></div>
-    <div class="stat-card green"><div class="stat-label">Enrollment Tracking</div><div class="stat-value">100%</div><div class="stat-sub">Every MA/MAPD policy tracked end-to-end</div></div>
-    <div class="stat-card blue"><div class="stat-label">Automated Workflows</div><div class="stat-value">10</div><div class="stat-sub">Post-enrollment outreach & status actions</div></div>
-    <div class="stat-card amber"><div class="stat-label">Audit Trail</div><div class="stat-value">Complete</div><div class="stat-sub">Status log, comments, docs on every policy</div></div>
+    <div class="stat-card"><div class="stat-label">CRM Platform</div><div class="stat-value">PolicyDen</div><div class="stat-sub">Centralized enrollment & compliance system</div></div>
+    <div class="stat-card"><div class="stat-label">Enrollment Tracking</div><div class="stat-value">100%</div><div class="stat-sub">Every MA/MAPD policy tracked end-to-end</div></div>
+    <div class="stat-card"><div class="stat-label">Automated Workflows</div><div class="stat-value">10</div><div class="stat-sub">Post-enrollment outreach & status actions</div></div>
+    <div class="stat-card"><div class="stat-label">Audit Trail</div><div class="stat-value">Complete</div><div class="stat-sub">Status log, comments, docs on every policy</div></div>
   </div>
-
-  <!-- ── SMS / Member Messaging ── -->
-  <div class="screenshot-gallery" style="margin-top: 8px;">
+  <div class="screenshot-gallery" style="margin-top:4px;">
     <div class="screenshot-card">
-      <div class="screenshot-img-wrap" onclick="openScreenshot(this)">
-        <img src="img/policyden-sms.png" alt="PolicyDen SMS — post-enrollment text messaging with member" loading="lazy">
-      </div>
+      <div class="screenshot-img-wrap" onclick="openScreenshot(this)"><img src="img/policyden-sms.png" alt="PolicyDen SMS — post-enrollment text messaging with member" loading="lazy"></div>
       <div class="screenshot-caption">
-        <h4><span class="cap-icon">📱</span> Post-Enrollment Text Messaging</h4>
-        <p>This is the built-in SMS module inside PolicyDen. Agents use it to send structured post-enrollment follow-up messages directly to members — confirming their plan is set, checking if documents arrived, and offering help with any questions.</p>
-        <ul class="cap-highlights">
-          <li>Full conversation thread view with sent/received messages and timestamps</li>
-          <li>Contact info panel on the right showing phone, DOB, address, and linked policies with current status</li>
-          <li>Automated outreach templates triggered at 7, 10, 14, 20, and 24 days post-enrollment</li>
-          <li>Every message is permanently logged and tied to the member's policy record for audit</li>
-        </ul>
+        <h4><span class="cap-icon"><svg><use href="#i-message"/></svg></span> Post-Enrollment Text Messaging</h4>
+        <p>Built-in SMS module inside PolicyDen. Agents send structured post-enrollment follow-up messages directly to members — confirming their plan is set, checking if documents arrived, and offering help with any questions.</p>
+        <ul class="cap-highlights"><li>Full conversation thread view with sent/received messages and timestamps</li><li>Contact info panel showing phone, DOB, address, and linked policies with current status</li><li>Automated outreach templates triggered at 7, 10, 14, 20, and 24 days post-enrollment</li><li>Every message permanently logged and tied to the member's policy record for audit</li></ul>
       </div>
     </div>
   </div>
-
-  <!-- ── Policies List + Policy Detail ── -->
   <div class="screenshot-gallery screenshot-grid-2">
     <div class="screenshot-card">
-      <div class="screenshot-img-wrap" onclick="openScreenshot(this)">
-        <img src="img/policyden-policies.png" alt="PolicyDen Policies — enrollment list with status tracking" loading="lazy">
-      </div>
+      <div class="screenshot-img-wrap" onclick="openScreenshot(this)"><img src="img/policyden-policies.png" alt="PolicyDen Policies — enrollment list with status tracking" loading="lazy"></div>
       <div class="screenshot-caption">
-        <h4><span class="cap-icon">📋</span> Policy Management</h4>
-        <p>The main policies view showing every enrollment with real-time status badges (Issued, Withdrawn, Pending). The top summary cards show pipeline totals at a glance. Each row links to a full policy detail record.</p>
-        <ul class="cap-highlights">
-          <li>Filterable by date range, carrier, agent, and status</li>
-          <li>Medicare number, sale date, and agency visible per row</li>
-          <li>Search and bulk export for compliance audits</li>
-        </ul>
+        <h4><span class="cap-icon"><svg><use href="#i-list"/></svg></span> Policy Management</h4>
+        <p>Main policies view with real-time status badges (Issued, Withdrawn, Pending). Top summary cards show pipeline totals at a glance.</p>
+        <ul class="cap-highlights"><li>Filterable by date range, carrier, agent, and status</li><li>Medicare number, sale date, and agency visible per row</li><li>Search and bulk export for compliance audits</li></ul>
       </div>
     </div>
     <div class="screenshot-card">
-      <div class="screenshot-img-wrap" onclick="openScreenshot(this)">
-        <img src="img/policyden-detail.png" alt="PolicyDen Policy Detail — full enrollment record with doctors and medications" loading="lazy">
-      </div>
+      <div class="screenshot-img-wrap" onclick="openScreenshot(this)"><img src="img/policyden-detail.png" alt="PolicyDen Policy Detail — full enrollment record" loading="lazy"></div>
       <div class="screenshot-caption">
-        <h4><span class="cap-icon">📄</span> Policy Detail Record</h4>
-        <p>Clicking any policy opens this detail panel. It captures the full enrollment profile — carrier, plan number, election period, effective date, and the writing agent — plus the member's doctors and medications with in-network/formulary status.</p>
-        <ul class="cap-highlights">
-          <li>Tabs for Documents, Comments, Audit Log, and Status Log</li>
-          <li>Doctor in-network toggles and medication tracking</li>
-          <li>Workflow controls (skip/enable automated outreach)</li>
-        </ul>
+        <h4><span class="cap-icon"><svg><use href="#i-file-text"/></svg></span> Policy Detail Record</h4>
+        <p>Full enrollment profile — carrier, plan number, election period, effective date, writing agent, doctors, and medications with formulary status.</p>
+        <ul class="cap-highlights"><li>Tabs for Documents, Comments, Audit Log, and Status Log</li><li>Doctor in-network toggles and medication tracking</li><li>Workflow controls (skip/enable automated outreach)</li></ul>
       </div>
     </div>
   </div>
-
-  <!-- ── Workflows ── -->
   <div class="screenshot-gallery">
     <div class="screenshot-card">
-      <div class="screenshot-img-wrap" onclick="openScreenshot(this)">
-        <img src="img/policyden-workflows.png" alt="PolicyDen Workflows — automated post-enrollment outreach triggers" loading="lazy">
-      </div>
+      <div class="screenshot-img-wrap" onclick="openScreenshot(this)"><img src="img/policyden-workflows.png" alt="PolicyDen Workflows — automated post-enrollment outreach triggers" loading="lazy"></div>
       <div class="screenshot-caption">
-        <h4><span class="cap-icon">⚙️</span> Automated Compliance Workflows</h4>
-        <p>This is PolicyDen's workflow engine. Each row is an automated action that fires when a policy event occurs — either a new policy being created or a status change like cancellation or issuance. These workflows drive the post-enrollment outreach sequence and ensure no member falls through the cracks.</p>
-        <ul class="cap-highlights">
-          <li>10 active workflows covering 7, 10, 14, 20, and 24-day post-enrollment outreach</li>
-          <li>Status-change triggers for cancellations, withdrawals, issuance, and pending requests</li>
-          <li>Each workflow is individually toggleable and shows last-modified date</li>
-          <li>Trigger types clearly labeled: POLICY CREATED vs. POLICY UPDATED</li>
-        </ul>
+        <h4><span class="cap-icon"><svg><use href="#i-settings"/></svg></span> Automated Compliance Workflows</h4>
+        <p>PolicyDen's workflow engine. Each row is an automated action that fires on policy events — new policies or status changes like cancellation or issuance.</p>
+        <ul class="cap-highlights"><li>10 active workflows covering 7, 10, 14, 20, and 24-day post-enrollment outreach</li><li>Status-change triggers for cancellations, withdrawals, issuance, and pending requests</li><li>Each workflow individually toggleable with last-modified date</li><li>Trigger types clearly labeled: POLICY CREATED vs. POLICY UPDATED</li></ul>
       </div>
     </div>
   </div>
-
-  <!-- ── Reporting ── -->
   <div class="screenshot-gallery">
     <div class="screenshot-card">
-      <div class="screenshot-img-wrap" onclick="openScreenshot(this)">
-        <img src="img/policyden-reporting.png" alt="PolicyDen Reporting — agent performance breakdown with effectuation rates" loading="lazy">
-      </div>
+      <div class="screenshot-img-wrap" onclick="openScreenshot(this)"><img src="img/policyden-reporting.png" alt="PolicyDen Reporting — agent performance breakdown" loading="lazy"></div>
       <div class="screenshot-caption">
-        <h4><span class="cap-icon">📊</span> Agent Performance & Effectuation Reporting</h4>
-        <p>PolicyDen's reporting module breaks down enrollment metrics by agency and agent. This view shows a March 2026 snapshot for MyCareClub — 415 total policies across all agents, with per-agent columns for every pipeline stage and effectuation rate. Compliance uses this to identify agents with high at-risk or low effectuation rates.</p>
-        <ul class="cap-highlights">
-          <li>Multi-level breakdown: Agency → Agent with drill-down</li>
-          <li>Columns: Total, Pending, Accepted, Cancelled, At Risk, Acceptance Rate, Issued, Placed, Effectuation %, Placement Rate</li>
-          <li>Saveable and filterable report templates with date-range controls</li>
-          <li>Exportable for carrier compliance submissions and internal reviews</li>
-        </ul>
+        <h4><span class="cap-icon"><svg><use href="#i-bar-chart"/></svg></span> Agent Performance & Effectuation Reporting</h4>
+        <p>Enrollment metrics by agency and agent. March 2026 snapshot — 415 total policies across all agents, with per-agent columns for every pipeline stage and effectuation rate.</p>
+        <ul class="cap-highlights"><li>Multi-level breakdown: Agency &rarr; Agent with drill-down</li><li>Columns: Total, Pending, Accepted, Cancelled, At Risk, Acceptance Rate, Issued, Placed, Effectuation %, Placement Rate</li><li>Saveable and filterable report templates with date-range controls</li><li>Exportable for carrier compliance submissions and internal reviews</li></ul>
       </div>
     </div>
   </div>
-
-  <!-- ── Key Capabilities Summary ── -->
   <div class="accordion">
     <div class="accordion-item open">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🔒</span> Compliance & Audit Capabilities</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check green">✓</span><span><strong>Complete audit trail</strong> — every policy has a Status Log recording each status change with timestamp, and an Audit Log tracking all modifications to the record</span></li>
-          <li><span class="check green">✓</span><span><strong>Comments & documentation</strong> — threaded notes on every policy from agents, QA, compliance, and customer service — available for carrier or CMS review on demand</span></li>
-          <li><span class="check green">✓</span><span><strong>Document management</strong> — SOAs, enrollment applications, and supporting documents attached directly to each policy record</span></li>
-          <li><span class="check green">✓</span><span><strong>Role-based access control</strong> — agents, supervisors, QA, compliance, and admin have distinct permission levels with PHI access restricted to licensed personnel</span></li>
-          <li><span class="check green">✓</span><span><strong>Automated post-enrollment outreach</strong> — 10 active workflows ensure every enrollee receives structured follow-up, with all touchpoints logged in the CRM</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-shield"/></svg></span> Compliance & Audit Capabilities</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check green">&#10003;</span><span><strong>Complete audit trail</strong> — every policy has a Status Log recording each status change with timestamp, and an Audit Log tracking all modifications to the record</span></li>
+        <li><span class="check green">&#10003;</span><span><strong>Comments & documentation</strong> — threaded notes on every policy from agents, QA, compliance, and customer service — available for carrier or CMS review on demand</span></li>
+        <li><span class="check green">&#10003;</span><span><strong>Document management</strong> — SOAs, enrollment applications, and supporting documents attached directly to each policy record</span></li>
+        <li><span class="check green">&#10003;</span><span><strong>Role-based access control</strong> — agents, supervisors, QA, compliance, and admin have distinct permission levels with PHI access restricted to licensed personnel</span></li>
+        <li><span class="check green">&#10003;</span><span><strong>Automated post-enrollment outreach</strong> — 10 active workflows ensure every enrollee receives structured follow-up, with all touchpoints logged in the CRM</span></li>
+      </ul></div></div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ LEGAL ════════════════════ -->
+<!-- ════ LEGAL ════ -->
 <div class="dept-page" id="page-legal">
   <div class="dept-header">
-    <div class="dept-badge" style="background:rgba(99,102,241,0.1);color:#4338ca;">Department</div>
+    <div class="dept-badge" style="background:rgba(99,102,241,0.07);color:#4338ca;">Department</div>
     <h2>Legal</h2>
     <p>Regulatory monitoring, carrier contract compliance, privacy/HIPAA controls, and legal risk management. Legal ensures MyCareClub's operations remain aligned with federal and state regulations, carrier agreements, and industry best practices.</p>
   </div>
-
   <div class="stats-row">
-    <div class="stat-card gold"><div class="stat-label">CMS Guidance</div><div class="stat-value">Current</div><div class="stat-sub">CY 2026 enrollment rules applied</div></div>
-    <div class="stat-card green"><div class="stat-label">HIPAA Compliance</div><div class="stat-value">Active</div><div class="stat-sub">PHI safeguards enforced</div></div>
-    <div class="stat-card blue"><div class="stat-label">Carrier Contracts</div><div class="stat-value">Reviewed</div><div class="stat-sub">Terms monitored continuously</div></div>
-    <div class="stat-card amber"><div class="stat-label">Regulatory Updates</div><div class="stat-value">Ongoing</div><div class="stat-sub">CMS, state, and carrier changes tracked</div></div>
+    <div class="stat-card"><div class="stat-label">CMS Guidance</div><div class="stat-value">Current</div><div class="stat-sub">CY 2026 enrollment rules applied</div></div>
+    <div class="stat-card"><div class="stat-label">HIPAA Compliance</div><div class="stat-value">Active</div><div class="stat-sub">PHI safeguards enforced</div></div>
+    <div class="stat-card"><div class="stat-label">Carrier Contracts</div><div class="stat-value">Reviewed</div><div class="stat-sub">Terms monitored continuously</div></div>
+    <div class="stat-card"><div class="stat-label">Regulatory Updates</div><div class="stat-value">Ongoing</div><div class="stat-sub">CMS, state, and carrier changes tracked</div></div>
   </div>
-
   <div class="accordion">
     <div class="accordion-item open">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📜</span> Regulatory Framework Compliance</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check green">✓</span><span><strong>42 CFR §§ 422.62 / 423.38</strong> — Election period rules monitored and applied to all enrollment procedures. SEP eligibility verified per CMS guidance.</span></li>
-          <li><span class="check green">✓</span><span><strong>CMS CY 2026 Enrollment & Disenrollment Guidance</strong> — Primary reference document for all election period determinations</span></li>
-          <li><span class="check green">✓</span><span><strong>TCPA compliance</strong> — Outbound call practices, DNC list management, and consent requirements enforced through dialer configuration</span></li>
-          <li><span class="check green">✓</span><span><strong>State insurance regulations</strong> — Per-state licensing requirements, marketing rules, and consumer protection laws monitored and applied</span></li>
-          <li><span class="check green">✓</span><span><strong>CMS Marketing Guidelines</strong> — All member-facing communications reviewed for compliance with CMS marketing and communications requirements</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-book"/></svg></span> Regulatory Framework Compliance</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check green">&#10003;</span><span><strong>42 CFR &sect;&sect; 422.62 / 423.38</strong> — Election period rules monitored and applied to all enrollment procedures. SEP eligibility verified per CMS guidance.</span></li>
+        <li><span class="check green">&#10003;</span><span><strong>CMS CY 2026 Enrollment & Disenrollment Guidance</strong> — Primary reference document for all election period determinations</span></li>
+        <li><span class="check green">&#10003;</span><span><strong>TCPA compliance</strong> — Outbound call practices, DNC list management, and consent requirements enforced through dialer configuration</span></li>
+        <li><span class="check green">&#10003;</span><span><strong>State insurance regulations</strong> — Per-state licensing requirements, marketing rules, and consumer protection laws monitored and applied</span></li>
+        <li><span class="check green">&#10003;</span><span><strong>CMS Marketing Guidelines</strong> — All member-facing communications reviewed for compliance with CMS marketing and communications requirements</span></li>
+      </ul></div></div>
     </div>
-
     <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🔒</span> HIPAA & Privacy Controls</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check blue">●</span><span>PHI access limited to minimum necessary for job function — role-based access enforced across all systems</span></li>
-          <li><span class="check blue">●</span><span>Agent permission required before accessing MARx or any beneficiary eligibility system</span></li>
-          <li><span class="check blue">●</span><span>Data breach response plan documented and tested — notification procedures aligned with HHS requirements</span></li>
-          <li><span class="check blue">●</span><span>Business Associate Agreements (BAAs) maintained with all vendors handling PHI</span></li>
-          <li><span class="check blue">●</span><span>HIPAA training included in onboarding and annual refresher for all personnel</span></li>
-          <li><span class="check blue">●</span><span>Physical and electronic safeguards documented per HIPAA Security Rule requirements</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-lock"/></svg></span> HIPAA & Privacy Controls</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check blue">&#8226;</span><span>PHI access limited to minimum necessary for job function — role-based access enforced across all systems</span></li>
+        <li><span class="check blue">&#8226;</span><span>Agent permission required before accessing MARx or any beneficiary eligibility system</span></li>
+        <li><span class="check blue">&#8226;</span><span>Data breach response plan documented and tested — notification procedures aligned with HHS requirements</span></li>
+        <li><span class="check blue">&#8226;</span><span>Business Associate Agreements (BAAs) maintained with all vendors handling PHI</span></li>
+        <li><span class="check blue">&#8226;</span><span>HIPAA training included in onboarding and annual refresher for all personnel</span></li>
+        <li><span class="check blue">&#8226;</span><span>Physical and electronic safeguards documented per HIPAA Security Rule requirements</span></li>
+      </ul></div></div>
     </div>
-
     <div class="accordion-item">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📋</span> Carrier Contract & Agreement Management</span>
-        <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content"><div class="accordion-inner">
-        <ul class="proc-list">
-          <li><span class="check gold">★</span><span>Carrier agreements reviewed upon execution and renewal for compliance obligations, reporting requirements, and termination clauses</span></li>
-          <li><span class="check gold">★</span><span>Corrective action plan requirements from carriers tracked centrally with response timelines and documentation</span></li>
-          <li><span class="check gold">★</span><span>Carrier-specific enrollment procedures, documentation requirements, and submission deadlines maintained per agreement</span></li>
-          <li><span class="check gold">★</span><span>Agent appointment and hierarchy changes communicated to carriers within required timeframes</span></li>
-          <li><span class="check gold">★</span><span>Carrier compliance bulletins and updates reviewed by Legal and distributed to relevant departments within 48 hours</span></li>
-        </ul>
-      </div></div>
+      <button class="accordion-trigger" onclick="toggleAccordion(this)"><span class="trigger-left"><span class="trigger-icon"><svg><use href="#i-file-text"/></svg></span> Carrier Contract & Agreement Management</span><span class="arrow"><svg><use href="#i-chevron"/></svg></span></button>
+      <div class="accordion-content"><div class="accordion-inner"><ul class="proc-list">
+        <li><span class="check gold">&#9733;</span><span>Carrier agreements reviewed upon execution and renewal for compliance obligations, reporting requirements, and termination clauses</span></li>
+        <li><span class="check gold">&#9733;</span><span>Corrective action plan requirements from carriers tracked centrally with response timelines and documentation</span></li>
+        <li><span class="check gold">&#9733;</span><span>Carrier-specific enrollment procedures, documentation requirements, and submission deadlines maintained per agreement</span></li>
+        <li><span class="check gold">&#9733;</span><span>Agent appointment and hierarchy changes communicated to carriers within required timeframes</span></li>
+        <li><span class="check gold">&#9733;</span><span>Carrier compliance bulletins and updates reviewed by Legal and distributed to relevant departments within 48 hours</span></li>
+      </ul></div></div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ QA SCORECARD ════════════════════ -->
+<!-- ════ QA SCORECARD ════ -->
 <div class="dept-page" id="page-scorecard">
   <div class="dept-header">
-    <div class="dept-badge" style="background:var(--gold-dim);color:var(--gold);">Reference Document</div>
+    <div class="dept-badge" style="background:var(--accent-subtle);color:var(--accent);">Reference Document</div>
     <h2>QA Scorecard — 2026</h2>
     <p>Standardized 42-criterion weighted evaluation applied to every MA/MAPD enrollment call. Updated April 6, 2026. Scoring is objective, non-discretionary, and audit-defensible.</p>
   </div>
-
   <div class="content-grid full">
     <div class="card">
       <div class="card-body" style="padding:0;">
@@ -1373,110 +1253,105 @@ body {
             <tr><td>Provided confirmation number to member</td><td class="weight">1</td></tr>
             <tr><td>Advised member of health plan documents mailing timeframe</td><td class="weight">1</td></tr>
             <tr><td>Provided carrier & MyCareClub customer service numbers</td><td class="weight">1</td></tr>
-            <tr class="section-row" style="background:var(--red-bg);"><td colspan="2">CTM Compliance Risk (Red Flag Indicator) — Automatic Penalty: –40 points</td></tr>
+            <tr class="section-row" style="background:var(--red-bg);"><td colspan="2" style="color:#b91c1c;">CTM Compliance Risk (Red Flag Indicator) — Automatic Penalty: &minus;40 points</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-
-  <div class="content-grid" style="margin-top:20px;">
+  <div class="content-grid" style="margin-top:16px;">
     <div class="card">
       <div class="card-header"><h3>Scoring Thresholds</h3></div>
       <div class="card-body">
-        <div style="margin-bottom:12px;"><span class="tag green" style="min-width:140px;display:inline-block;text-align:center;">Exceptional</span> 96% – 100%</div>
-        <div style="margin-bottom:12px;"><span class="tag blue" style="min-width:140px;display:inline-block;text-align:center;">Acceptable</span> 80% – 95%</div>
-        <div style="margin-bottom:12px;"><span class="tag amber" style="min-width:140px;display:inline-block;text-align:center;">Unacceptable</span> Below 80%</div>
-        <div><span class="tag red" style="min-width:140px;display:inline-block;text-align:center;">Compliance Risk</span> Below 70%</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;"><span class="tag green" style="min-width:120px;text-align:center;">Exceptional</span><span style="font-size:13px;color:var(--slate-600);">96% &ndash; 100%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><span class="tag blue" style="min-width:120px;text-align:center;">Acceptable</span><span style="font-size:13px;color:var(--slate-600);">80% &ndash; 95%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><span class="tag amber" style="min-width:120px;text-align:center;">Unacceptable</span><span style="font-size:13px;color:var(--slate-600);">Below 80%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><span class="tag red" style="min-width:120px;text-align:center;">Compliance Risk</span><span style="font-size:13px;color:var(--slate-600);">Below 70%</span></div>
+        </div>
       </div>
     </div>
     <div class="card">
       <div class="card-header"><h3>Weight Distribution</h3></div>
       <div class="card-body">
-        <div style="margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;">Opening Call</span><span style="font-weight:700;">25 pts</span></div>
-        <div class="kpi-bar-wrap"><div class="kpi-bar gold" style="width:25%;"></div></div>
-        <div style="margin:10px 0;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;">Needs Assessment</span><span style="font-weight:700;">22 pts</span></div>
-        <div class="kpi-bar-wrap"><div class="kpi-bar blue" style="width:22%;"></div></div>
-        <div style="margin:10px 0;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;">Plan Benefit Review</span><span style="font-weight:700;">27 pts</span></div>
-        <div class="kpi-bar-wrap"><div class="kpi-bar green" style="width:27%;"></div></div>
-        <div style="margin:10px 0;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;">Application</span><span style="font-weight:700;">22 pts</span></div>
-        <div class="kpi-bar-wrap"><div class="kpi-bar amber" style="width:22%;"></div></div>
-        <div style="margin:10px 0;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;">Closing</span><span style="font-weight:700;">3 pts</span></div>
-        <div class="kpi-bar-wrap"><div class="kpi-bar gold" style="width:3%;"></div></div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div><div class="weight-row"><span>Opening Call</span><span class="weight-val">25 pts</span></div><div class="kpi-bar-wrap"><div class="kpi-bar gold" style="width:25%;"></div></div></div>
+          <div><div class="weight-row"><span>Needs Assessment</span><span class="weight-val">22 pts</span></div><div class="kpi-bar-wrap"><div class="kpi-bar blue" style="width:22%;"></div></div></div>
+          <div><div class="weight-row"><span>Plan Benefit Review</span><span class="weight-val">27 pts</span></div><div class="kpi-bar-wrap"><div class="kpi-bar green" style="width:27%;"></div></div></div>
+          <div><div class="weight-row"><span>Application</span><span class="weight-val">22 pts</span></div><div class="kpi-bar-wrap"><div class="kpi-bar amber" style="width:22%;"></div></div></div>
+          <div><div class="weight-row"><span>Closing</span><span class="weight-val">3 pts</span></div><div class="kpi-bar-wrap"><div class="kpi-bar gold" style="width:3%;"></div></div></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ CTM MITIGATION PLAN ════════════════════ -->
+<!-- ════ CTM MITIGATION ════ -->
 <div class="dept-page" id="page-ctm">
   <div class="dept-header">
-    <div class="dept-badge" style="background:var(--red-bg);color:#991b1b;">Strategic Document</div>
+    <div class="dept-badge" style="background:var(--red-bg);color:#b91c1c;">Strategic Document</div>
     <h2>CTM Reduction Mitigation Plan</h2>
     <p>Cross-departmental strategy to reduce agent-generated CTMs across all MA and MAPD lines. Sustained CTM reduction is directly tied to enrollment growth, carrier appointments, Star Ratings performance, and member retention.</p>
   </div>
-
   <div class="content-grid full">
     <div class="card">
-      <div class="card-header"><h3>Integrated CTM Prevention Workflow</h3><span class="card-badge" style="background:var(--red-bg);color:#991b1b;">Closed-Loop</span></div>
+      <div class="card-header"><h3>Integrated CTM Prevention Workflow</h3><span class="card-badge" style="background:var(--red-bg);color:#b91c1c;">Closed-Loop</span></div>
       <div class="card-body">
         <div class="workflow">
           <div class="wf-step"><div class="wf-num">1</div><div class="wf-title">Enrollment Call</div><div class="wf-desc">Agent follows CMS-compliant call flow with standardized disclosures</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">2</div><div class="wf-title">QA Scorecard</div><div class="wf-desc">100% of enrollments scored. CTM Risk tags applied to high-risk enrollments.</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">3</div><div class="wf-title">CS Outreach</div><div class="wf-desc">Proactive 3-day contact confirming understanding. High-risk = 24hr outreach.</div></div>
-          <div class="wf-arrow">→</div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
           <div class="wf-step"><div class="wf-num">4</div><div class="wf-title">Issue Intercept</div><div class="wf-desc">CS resolves concerns before member contacts carrier. 3-tier escalation if needed.</div></div>
-          <div class="wf-arrow">→</div>
-          <div class="wf-step"><div class="wf-num" style="background:var(--gold);">✓</div><div class="wf-title">CTM Prevented</div><div class="wf-desc">Member satisfied, enrollment retained, carrier standing protected.</div></div>
+          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
+          <div class="wf-step"><div class="wf-num" style="background:var(--accent);">&#10003;</div><div class="wf-title">CTM Prevented</div><div class="wf-desc">Member satisfied, enrollment retained, carrier standing protected.</div></div>
         </div>
       </div>
     </div>
   </div>
-
   <div class="content-grid">
     <div class="card">
       <div class="card-header"><h3>Root Cause Categories</h3></div>
       <div class="card-body">
         <ul class="proc-list">
-          <li><span class="check red" style="background:var(--red-bg);color:var(--red);">!</span><span><strong>Benefit Misunderstanding</strong> — Member enrolled without fully understanding plan coverage, leading to post-enrollment surprise and dissatisfaction</span></li>
-          <li><span class="check red" style="background:var(--red-bg);color:var(--red);">!</span><span><strong>Formulary/Drug Coverage</strong> — MAPD members discover medication not covered or costs higher than expected after enrollment</span></li>
-          <li><span class="check red" style="background:var(--red-bg);color:var(--red);">!</span><span><strong>Provider Network</strong> — PCP, specialist, or hospital not in network, discovered after enrollment effective date</span></li>
-          <li><span class="check red" style="background:var(--red-bg);color:var(--red);">!</span><span><strong>Enrollment Process</strong> — Missing disclosures, inadequate consent, or election period misuse leading to invalid or contested enrollment</span></li>
-          <li><span class="check red" style="background:var(--red-bg);color:var(--red);">!</span><span><strong>Coverage Transition</strong> — Impact on existing coverage (Medicaid, TRICARE, VA) not adequately explained during enrollment</span></li>
+          <li><span class="check red">!</span><span><strong>Benefit Misunderstanding</strong> — Member enrolled without fully understanding plan coverage, leading to post-enrollment surprise and dissatisfaction</span></li>
+          <li><span class="check red">!</span><span><strong>Formulary/Drug Coverage</strong> — MAPD members discover medication not covered or costs higher than expected after enrollment</span></li>
+          <li><span class="check red">!</span><span><strong>Provider Network</strong> — PCP, specialist, or hospital not in network, discovered after enrollment effective date</span></li>
+          <li><span class="check red">!</span><span><strong>Enrollment Process</strong> — Missing disclosures, inadequate consent, or election period misuse leading to invalid or contested enrollment</span></li>
+          <li><span class="check red">!</span><span><strong>Coverage Transition</strong> — Impact on existing coverage (Medicaid, TRICARE, VA) not adequately explained during enrollment</span></li>
         </ul>
       </div>
     </div>
     <div class="card">
-      <div class="card-header"><h3>AEP / OEP Elevated Protocols</h3><span class="card-badge" style="background:var(--amber-bg);color:#92400e;">High Volume</span></div>
+      <div class="card-header"><h3>AEP / OEP Elevated Protocols</h3><span class="card-badge" style="background:var(--amber-bg);color:#b45309;">High Volume</span></div>
       <div class="card-body">
         <ul class="proc-list">
-          <li><span class="check amber" style="background:var(--amber-bg);color:var(--amber);">⚡</span><span>QA review turnaround: <strong>same day</strong> for first 2 weeks of AEP</span></li>
-          <li><span class="check amber" style="background:var(--amber-bg);color:var(--amber);">⚡</span><span>CS outreach window: <strong>24 hours</strong> for all AEP plan-change enrollments</span></li>
-          <li><span class="check amber" style="background:var(--amber-bg);color:var(--amber);">⚡</span><span>Returning agents: <strong>full compliance re-certification</strong> before live AEP calls</span></li>
-          <li><span class="check amber" style="background:var(--amber-bg);color:var(--amber);">⚡</span><span>MAPD formulary verification: <strong>mandatory QA checkpoint</strong> Oct 1 – Dec 31</span></li>
-          <li><span class="check amber" style="background:var(--amber-bg);color:var(--amber);">⚡</span><span>CTM rate monitoring: <strong>weekly</strong> (vs. monthly) during AEP/OEP windows</span></li>
-          <li><span class="check amber" style="background:var(--amber-bg);color:var(--amber);">⚡</span><span>Threshold breach: <strong>immediate coaching</strong> before next selling day</span></li>
+          <li><span class="check amber">&#9889;</span><span>QA review turnaround: <strong>same day</strong> for first 2 weeks of AEP</span></li>
+          <li><span class="check amber">&#9889;</span><span>CS outreach window: <strong>24 hours</strong> for all AEP plan-change enrollments</span></li>
+          <li><span class="check amber">&#9889;</span><span>Returning agents: <strong>full compliance re-certification</strong> before live AEP calls</span></li>
+          <li><span class="check amber">&#9889;</span><span>MAPD formulary verification: <strong>mandatory QA checkpoint</strong> Oct 1 &ndash; Dec 31</span></li>
+          <li><span class="check amber">&#9889;</span><span>CTM rate monitoring: <strong>weekly</strong> (vs. monthly) during AEP/OEP windows</span></li>
+          <li><span class="check amber">&#9889;</span><span>Threshold breach: <strong>immediate coaching</strong> before next selling day</span></li>
         </ul>
       </div>
     </div>
   </div>
-
   <div class="content-grid full" style="margin-top:0;">
     <div class="card">
-      <div class="card-header"><h3>Key Performance Indicators</h3><span class="card-badge" style="background:var(--green-bg);color:#166534;">Monthly / Quarterly</span></div>
-      <div class="card-body">
+      <div class="card-header"><h3>Key Performance Indicators</h3><span class="card-badge" style="background:var(--green-bg);color:#15803d;">Monthly / Quarterly</span></div>
+      <div class="card-body" style="padding:0;">
         <table class="kpi-table">
           <thead><tr><th>KPI</th><th>Target</th><th>Frequency</th><th>Owner</th></tr></thead>
           <tbody>
-            <tr><td>CTM rate per agent (CTMs ÷ policies written)</td><td>Below carrier threshold</td><td>Monthly</td><td>Compliance Manager</td></tr>
-            <tr><td>QA scorecard pass rate (≥80%)</td><td>≥ 95% of enrollments</td><td>Monthly</td><td>QA Manager</td></tr>
+            <tr><td>CTM rate per agent (CTMs &divide; policies written)</td><td>Below carrier threshold</td><td>Monthly</td><td>Compliance Manager</td></tr>
+            <tr><td>QA scorecard pass rate (&ge;80%)</td><td>&ge; 95% of enrollments</td><td>Monthly</td><td>QA Manager</td></tr>
             <tr><td>Post-enrollment outreach completion rate</td><td>100% within 3 business days</td><td>Weekly</td><td>CS Supervisor</td></tr>
             <tr><td>Rapid disenrollment rate (within 90 days)</td><td>Declining trend</td><td>Monthly</td><td>Compliance Manager</td></tr>
-            <tr><td>Average CX score across all dimensions</td><td>≥ 2.0 (Fully Demonstrated)</td><td>Monthly</td><td>QA Manager</td></tr>
-            <tr><td>Grievance response time (receipt to QA review)</td><td>≤ 24 hours</td><td>Per-incident</td><td>Compliance Manager</td></tr>
-            <tr><td>CAP closure rate (resolved within 90 days)</td><td>≥ 80%</td><td>Quarterly</td><td>Compliance Manager</td></tr>
+            <tr><td>Average CX score across all dimensions</td><td>&ge; 2.0 (Fully Demonstrated)</td><td>Monthly</td><td>QA Manager</td></tr>
+            <tr><td>Grievance response time (receipt to QA review)</td><td>&le; 24 hours</td><td>Per-incident</td><td>Compliance Manager</td></tr>
+            <tr><td>CAP closure rate (resolved within 90 days)</td><td>&ge; 80%</td><td>Quarterly</td><td>Compliance Manager</td></tr>
             <tr><td>Agent compliance scorecard distribution rate</td><td>100% monthly</td><td>Monthly</td><td>Team Leads</td></tr>
           </tbody>
         </table>
@@ -1495,16 +1370,15 @@ body {
 <!-- ═══ JAVASCRIPT ═══ -->
 <script>
 function showPage(pageId) {
-  document.querySelectorAll('.dept-page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.dept-page').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.nav-item').forEach(function(n) { n.classList.remove('active'); });
   document.getElementById('page-' + pageId).classList.add('active');
   event.currentTarget.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function toggleAccordion(trigger) {
-  const item = trigger.closest('.accordion-item');
-  item.classList.toggle('open');
+  trigger.closest('.accordion-item').classList.toggle('open');
 }
 
 function openScreenshot(wrap) {
@@ -1524,10 +1398,10 @@ document.addEventListener('keydown', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.kpi-bar').forEach(bar => {
-    const width = bar.style.width;
+  document.querySelectorAll('.kpi-bar').forEach(function(bar) {
+    var width = bar.style.width;
     bar.style.width = '0';
-    setTimeout(() => { bar.style.width = width; }, 300);
+    setTimeout(function() { bar.style.width = width; }, 300);
   });
 });
 </script>
