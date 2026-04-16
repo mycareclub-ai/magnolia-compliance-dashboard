@@ -337,13 +337,13 @@ body {
 }
 .org-person:hover { border-color: var(--slate-300); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
 .org-person.founder { border-color: var(--accent); border-width: 2px; }
-.org-person .person-avatar {
-  width: 42px; height: 42px; border-radius: 50%; margin: 0 auto 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 14px; color: var(--white); letter-spacing: -0.3px;
+.org-person .person-photo {
+  width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 12px;
+  object-fit: cover; object-position: center 15%;
+  border: 3px solid var(--slate-200);
+  display: block;
 }
-.org-person.founder .person-avatar { background: var(--slate-900); }
-.org-person:not(.founder) .person-avatar { background: var(--slate-600); }
+.org-person.founder .person-photo { border-color: var(--accent); }
 .org-person .person-name { font-size: 14px; font-weight: 700; color: var(--slate-900); letter-spacing: -0.2px; line-height: 1.3; }
 .org-person .person-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent); margin-top: 3px; }
 .org-person .person-scope { font-size: 12px; color: var(--slate-500); margin-top: 6px; line-height: 1.5; }
@@ -383,9 +383,14 @@ body {
 }
 .org-branch-person:hover { background: var(--slate-50); }
 .org-branch-person .bp-avatar {
-  width: 34px; height: 34px; border-radius: 50%;
+  width: 40px; height: 40px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-weight: 700; font-size: 11px; color: var(--white); flex-shrink: 0;
+}
+.org-branch-person .bp-photo {
+  width: 40px; height: 40px; border-radius: 50%;
+  object-fit: cover; object-position: center 15%;
+  border: 2px solid var(--slate-200); flex-shrink: 0;
 }
 .org-branch-person .bp-info { flex: 1; }
 .org-branch-person .bp-name { font-size: 13px; font-weight: 600; color: var(--slate-900); line-height: 1.3; }
@@ -643,28 +648,157 @@ body {
     <p>MyCareClub's end-to-end compliance, quality assurance, and member experience framework across all operational departments. This document serves as a comprehensive overview of our organizational controls, procedures, and continuous improvement infrastructure.</p>
   </div>
 
+  <!-- ── LEADERSHIP ORG CHART ── -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-header">
+      <h3>Leadership &amp; Accountability</h3>
+      <span class="card-badge" style="background:var(--slate-100);color:var(--slate-700);">Organizational Chart</span>
+    </div>
+    <div class="card-body" style="padding:28px 24px 32px;">
+
+      <!-- FOUNDERS ROW -->
+      <div class="org-tier founders">
+        <div class="org-person founder">
+          <img class="person-photo" src="img/team/mitchell-budwig.png" alt="Mitchell Budwig">
+          <div class="person-name">Mitchell Budwig</div>
+          <div class="person-title">Founder &amp; CEO</div>
+          <div class="person-scope">Strategic vision, carrier partnerships, growth</div>
+        </div>
+        <div class="org-person founder">
+          <img class="person-photo" src="img/team/kyle-proctor.png" alt="Kyle Proctor">
+          <div class="person-name">Kyle Proctor</div>
+          <div class="person-title">Founder &amp; COO</div>
+          <div class="person-scope">Operations, technology, compliance infrastructure</div>
+        </div>
+        <div class="org-person founder">
+          <img class="person-photo" src="img/team/jeremy-newnham.png" alt="Jeremy Newnham">
+          <div class="person-name">Jeremy Newnham</div>
+          <div class="person-title">Founder &amp; Managing Partner</div>
+          <div class="person-scope">Marketing, lead generation, partner strategy</div>
+        </div>
+        <div class="org-person founder">
+          <img class="person-photo" src="img/team/jordan-messer.png" alt="Jordan Messer">
+          <div class="person-name">Jordan Messer</div>
+          <div class="person-title">Founder &amp; Managing Partner</div>
+          <div class="person-scope">Business development, agency partnerships</div>
+        </div>
+      </div>
+
+      <!-- CONNECTOR -->
+      <div class="org-connector-line"><div class="vline"></div></div>
+
+      <!-- DEPARTMENT BRANCHES -->
+      <div class="org-branch">
+
+        <!-- SALES -->
+        <div class="org-branch-col">
+          <div class="org-branch-header">
+            <div class="branch-icon" style="background:var(--green);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div class="branch-title">Sales Management</div>
+          </div>
+          <div class="org-branch-body">
+            <div class="org-branch-person">
+              <img class="bp-photo" src="img/team/richard-kenyon.png" alt="Richard Kenyon">
+              <div class="bp-info">
+                <div class="bp-name">Richard Kenyon</div>
+                <div class="bp-title">Sales Director</div>
+                <div class="bp-scope">Sales floor strategy &amp; agent performance</div>
+              </div>
+            </div>
+            <div class="org-branch-person">
+              <img class="bp-photo" src="img/team/brandon-budwig.png" alt="Brandon Budwig">
+              <div class="bp-info">
+                <div class="bp-name">Brandon Budwig</div>
+                <div class="bp-title">Sales Manager</div>
+                <div class="bp-scope">Team coaching &amp; enrollment quality</div>
+              </div>
+            </div>
+            <div class="org-branch-person">
+              <img class="bp-photo" src="img/team/amy-ecolono.png" alt="Amy Ecolono">
+              <div class="bp-info">
+                <div class="bp-name">Amy Ecolono</div>
+                <div class="bp-title">Sales Manager</div>
+                <div class="bp-scope">Agent development &amp; production targets</div>
+              </div>
+            </div>
+            <div class="org-branch-person">
+              <img class="bp-photo" src="img/team/michael-triebwasser.png" alt="Michael Triebwasser">
+              <div class="bp-info">
+                <div class="bp-name">Michael Triebwasser</div>
+                <div class="bp-title">Sales Manager</div>
+                <div class="bp-scope">Call flow adherence &amp; CMS compliance</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OPERATIONS & COMPLIANCE -->
+        <div class="org-branch-col">
+          <div class="org-branch-header">
+            <div class="branch-icon" style="background:var(--accent);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="branch-title">Operations &amp; Compliance</div>
+          </div>
+          <div class="org-branch-body">
+            <div class="org-branch-person">
+              <img class="bp-photo" src="img/team/jordan-scott.png" alt="Jordan Scott">
+              <div class="bp-info">
+                <div class="bp-name">Jordan Scott</div>
+                <div class="bp-title">Operations Director</div>
+                <div class="bp-scope">Operational infrastructure &amp; process oversight</div>
+              </div>
+            </div>
+            <div class="org-branch-person">
+              <img class="bp-photo" src="img/team/terrance-rhymer.png" alt="Terrance Rhymer">
+              <div class="bp-info">
+                <div class="bp-name">Terrance Rhymer</div>
+                <div class="bp-title">Compliance Officer</div>
+                <div class="bp-scope">CTM mitigation, grievances, CAPs &amp; carrier liaison</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FINANCE & LEGAL -->
+        <div class="org-branch-col">
+          <div class="org-branch-header">
+            <div class="branch-icon" style="background:var(--blue);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div class="branch-title">Finance &amp; Legal</div>
+          </div>
+          <div class="org-branch-body">
+            <div class="org-branch-person">
+              <img class="bp-photo" src="img/team/eduardo-fajardo.png" alt="Eduardo Fajardo">
+              <div class="bp-info">
+                <div class="bp-name">Eduardo Fajardo</div>
+                <div class="bp-title">Chief Financial Officer</div>
+                <div class="bp-scope">Financial oversight, commissions &amp; reconciliation</div>
+              </div>
+            </div>
+            <div class="org-branch-person">
+              <div class="bp-avatar" style="background:var(--blue);">ZD</div>
+              <div class="bp-info">
+                <div class="bp-name">Zachary Darrow</div>
+                <div class="bp-title">General Counsel</div>
+                <div class="bp-scope">Regulatory compliance, contracts &amp; HIPAA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <div class="stats-row">
     <div class="stat-card"><div class="stat-label">Departments Covered</div><div class="stat-value">8</div><div class="stat-sub">Full organizational coverage</div></div>
     <div class="stat-card"><div class="stat-label">Enrollment QA Review Rate</div><div class="stat-value">100%</div><div class="stat-sub">Every MA/MAPD enrollment scored</div></div>
     <div class="stat-card"><div class="stat-label">Post-Enrollment Outreach</div><div class="stat-value">3-Day</div><div class="stat-sub">All new enrollees contacted</div></div>
     <div class="stat-card"><div class="stat-label">Grievance Response SLA</div><div class="stat-value">24hr</div><div class="stat-sub">Carrier complaints reviewed same day</div></div>
-  </div>
-
-  <div class="content-grid full">
-    <div class="card">
-      <div class="card-header"><h3>Three-Pillar CTM Reduction Strategy</h3><span class="card-badge" style="background:var(--accent-subtle);color:var(--accent);">Core Framework</span></div>
-      <div class="card-body">
-        <div class="workflow">
-          <div class="wf-step"><div class="wf-num">1</div><div class="wf-title">Pre-Enrollment QA</div><div class="wf-desc">100% scorecard review, compliance risk flags, CX scoring, CTM risk tagging</div></div>
-          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
-          <div class="wf-step"><div class="wf-num">2</div><div class="wf-title">Post-Enrollment CS</div><div class="wf-desc">3-day outreach, 2-tier licensed support, 3-tier escalation, CRM documentation</div></div>
-          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
-          <div class="wf-step"><div class="wf-num">3</div><div class="wf-title">Agent Performance</div><div class="wf-desc">Notion dashboards, progressive discipline, proactive coaching, monthly scorecards</div></div>
-          <div class="wf-arrow"><svg><use href="#i-arrow-right"/></svg></div>
-          <div class="wf-step"><div class="wf-num" style="background:var(--accent);">&#10003;</div><div class="wf-title">CTM Prevention</div><div class="wf-desc">Closed-loop system — every potential complaint intercepted before reaching carrier</div></div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="content-grid">
@@ -693,154 +827,6 @@ body {
           <li><span class="check gold">&#9733;</span><span><strong>AEP/OEP Elevated Protocols</strong> — Enhanced review cadence, shortened outreach windows, and weekly CTM monitoring during peak enrollment</span></li>
           <li><span class="check gold">&#9733;</span><span><strong>Closed-Loop Grievance System</strong> — Every carrier complaint auto-routes to agent record, triggers QA review, and feeds back into coaching</span></li>
         </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── LEADERSHIP ORG CHART ── -->
-  <div class="org-chart-section" style="margin-top:28px;">
-    <div class="card">
-      <div class="card-header">
-        <h3>Leadership &amp; Accountability</h3>
-        <span class="card-badge" style="background:var(--slate-100);color:var(--slate-700);">Organizational Chart</span>
-      </div>
-      <div class="card-body" style="padding:24px 20px 28px;">
-
-        <!-- FOUNDERS ROW -->
-        <div class="org-tier founders">
-          <div class="org-person founder">
-            <div class="person-avatar">MB</div>
-            <div class="person-name">Mitchell Budwig</div>
-            <div class="person-title">Founder &amp; CEO</div>
-            <div class="person-scope">Strategic vision, carrier partnerships, growth</div>
-          </div>
-          <div class="org-person founder">
-            <div class="person-avatar">KP</div>
-            <div class="person-name">Kyle Proctor</div>
-            <div class="person-title">Founder &amp; COO</div>
-            <div class="person-scope">Operations, technology, compliance infrastructure</div>
-          </div>
-          <div class="org-person founder">
-            <div class="person-avatar">JN</div>
-            <div class="person-name">Jeremy Newnham</div>
-            <div class="person-title">Founder &amp; Managing Partner</div>
-            <div class="person-scope">Marketing, lead generation, partner strategy</div>
-          </div>
-          <div class="org-person founder">
-            <div class="person-avatar">JM</div>
-            <div class="person-name">Jordan Messer</div>
-            <div class="person-title">Founder &amp; Managing Partner</div>
-            <div class="person-scope">Business development, agency partnerships</div>
-          </div>
-        </div>
-
-        <!-- CONNECTOR -->
-        <div class="org-connector-line"><div class="vline"></div></div>
-
-        <!-- DEPARTMENT BRANCHES -->
-        <div class="org-branch">
-
-          <!-- SALES -->
-          <div class="org-branch-col">
-            <div class="org-branch-header">
-              <div class="branch-icon" style="background:var(--green);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-              </div>
-              <div class="branch-title">Sales Management</div>
-            </div>
-            <div class="org-branch-body">
-              <div class="org-branch-person">
-                <div class="bp-avatar" style="background:var(--green);">RK</div>
-                <div class="bp-info">
-                  <div class="bp-name">Richard Kenyon</div>
-                  <div class="bp-title">Sales Director</div>
-                  <div class="bp-scope">Sales floor strategy &amp; agent performance</div>
-                </div>
-              </div>
-              <div class="org-branch-person">
-                <div class="bp-avatar" style="background:#22c55e;">BB</div>
-                <div class="bp-info">
-                  <div class="bp-name">Brandon Budwig</div>
-                  <div class="bp-title">Sales Manager</div>
-                  <div class="bp-scope">Team coaching &amp; enrollment quality</div>
-                </div>
-              </div>
-              <div class="org-branch-person">
-                <div class="bp-avatar" style="background:#22c55e;">AE</div>
-                <div class="bp-info">
-                  <div class="bp-name">Amy Ecolono</div>
-                  <div class="bp-title">Sales Manager</div>
-                  <div class="bp-scope">Agent development &amp; production targets</div>
-                </div>
-              </div>
-              <div class="org-branch-person">
-                <div class="bp-avatar" style="background:#22c55e;">MT</div>
-                <div class="bp-info">
-                  <div class="bp-name">Michael Triebwasser</div>
-                  <div class="bp-title">Sales Manager</div>
-                  <div class="bp-scope">Call flow adherence &amp; CMS compliance</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- OPERATIONS & COMPLIANCE -->
-          <div class="org-branch-col">
-            <div class="org-branch-header">
-              <div class="branch-icon" style="background:var(--accent);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <div class="branch-title">Operations &amp; Compliance</div>
-            </div>
-            <div class="org-branch-body">
-              <div class="org-branch-person">
-                <div class="bp-avatar" style="background:var(--accent);">JS</div>
-                <div class="bp-info">
-                  <div class="bp-name">Jordan Scott</div>
-                  <div class="bp-title">Operations Director</div>
-                  <div class="bp-scope">Operational infrastructure &amp; process oversight</div>
-                </div>
-              </div>
-              <div class="org-branch-person">
-                <div class="bp-avatar" style="background:#059669;">TR</div>
-                <div class="bp-info">
-                  <div class="bp-name">Terrance Rhymer</div>
-                  <div class="bp-title">Compliance Officer</div>
-                  <div class="bp-scope">CTM mitigation, grievances, CAPs &amp; carrier liaison</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- FINANCE & LEGAL -->
-          <div class="org-branch-col">
-            <div class="org-branch-header">
-              <div class="branch-icon" style="background:var(--blue);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-              </div>
-              <div class="branch-title">Finance &amp; Legal</div>
-            </div>
-            <div class="org-branch-body">
-              <div class="org-branch-person">
-                <div class="bp-avatar" style="background:var(--blue);">EF</div>
-                <div class="bp-info">
-                  <div class="bp-name">Eduardo Fajardo</div>
-                  <div class="bp-title">Chief Financial Officer</div>
-                  <div class="bp-scope">Financial oversight, commissions &amp; reconciliation</div>
-                </div>
-              </div>
-              <div class="org-branch-person">
-                <div class="bp-avatar" style="background:#3b82f6;">ZD</div>
-                <div class="bp-info">
-                  <div class="bp-name">Zachary Darrow</div>
-                  <div class="bp-title">General Counsel</div>
-                  <div class="bp-scope">Regulatory compliance, contracts &amp; HIPAA</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </div>
     </div>
   </div>
