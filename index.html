@@ -296,47 +296,81 @@ body {
 .timeline-item .tl-desc { font-size: 13px; color: var(--gray-500); }
 
 /* ── SCREENSHOT GALLERY ── */
-.screenshot-gallery { display: grid; grid-template-columns: 1fr; gap: 28px; margin-bottom: 24px; }
+.screenshot-gallery { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 24px; }
 .screenshot-card {
   background: var(--white); border: 1px solid var(--gray-200);
   border-radius: 12px; overflow: hidden; transition: var(--transition);
+  display: flex; flex-direction: row; align-items: stretch;
 }
-.screenshot-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(57,181,74,0.1); }
+.screenshot-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(57,181,74,0.08); }
 .screenshot-img-wrap {
-  position: relative; overflow: hidden; border-bottom: 1px solid var(--gray-200);
-  cursor: pointer;
+  flex: 0 0 420px; max-width: 420px; overflow: hidden;
+  border-right: 1px solid var(--gray-200); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--gray-50); position: relative;
 }
 .screenshot-img-wrap img {
-  width: 100%; display: block; transition: transform 0.3s ease;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.3s ease;
+  image-rendering: -webkit-optimize-contrast;
 }
-.screenshot-img-wrap:hover img { transform: scale(1.02); }
+.screenshot-img-wrap:hover img { transform: scale(1.03); }
+.screenshot-img-wrap::after {
+  content: '🔍 Click to enlarge'; position: absolute; bottom: 8px; right: 8px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.3px;
+  background: rgba(0,0,0,0.6); color: #fff; padding: 3px 8px; border-radius: 4px;
+  opacity: 0; transition: opacity 0.2s ease; pointer-events: none;
+}
+.screenshot-img-wrap:hover::after { opacity: 1; }
 .screenshot-caption {
-  padding: 18px 24px;
+  flex: 1; padding: 24px 28px; display: flex; flex-direction: column; justify-content: center;
 }
 .screenshot-caption h4 {
-  font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--navy);
-  display: flex; align-items: center; gap: 8px;
+  font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--navy);
+  display: flex; align-items: center; gap: 10px;
 }
 .screenshot-caption h4 .cap-icon {
-  width: 28px; height: 28px; border-radius: 6px; display: flex;
-  align-items: center; justify-content: center; font-size: 14px;
+  width: 32px; height: 32px; border-radius: 8px; display: flex;
+  align-items: center; justify-content: center; font-size: 15px;
   background: var(--gold-dim); color: var(--gold); flex-shrink: 0;
 }
-.screenshot-caption p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+.screenshot-caption p { font-size: 13px; color: var(--gray-500); line-height: 1.7; margin-bottom: 0; }
+.screenshot-caption .cap-highlights {
+  list-style: none; margin-top: 12px; padding: 0;
+}
+.screenshot-caption .cap-highlights li {
+  font-size: 13px; color: var(--gray-600); padding: 4px 0;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.screenshot-caption .cap-highlights li::before {
+  content: '✓'; color: var(--gold); font-weight: 700; font-size: 12px; margin-top: 1px; flex-shrink: 0;
+}
 .screenshot-grid-2 { grid-template-columns: 1fr 1fr; }
+.screenshot-grid-2 .screenshot-card {
+  flex-direction: column;
+}
+.screenshot-grid-2 .screenshot-img-wrap {
+  flex: none; max-width: 100%; max-height: 260px;
+  border-right: none; border-bottom: 1px solid var(--gray-200);
+}
 
 .screenshot-overlay {
   display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.85); z-index: 9999; align-items: center;
+  background: rgba(0,0,0,0.88); z-index: 9999; align-items: center;
   justify-content: center; padding: 40px; cursor: zoom-out;
 }
 .screenshot-overlay.visible { display: flex; }
 .screenshot-overlay img {
-  max-width: 95%; max-height: 95vh; border-radius: 8px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  max-width: 90%; max-height: 90vh; border-radius: 8px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  image-rendering: -webkit-optimize-contrast;
 }
 
-@media (max-width: 1024px) { .screenshot-grid-2 { grid-template-columns: 1fr; } }
+@media (max-width: 1024px) {
+  .screenshot-grid-2 { grid-template-columns: 1fr; }
+  .screenshot-card { flex-direction: column; }
+  .screenshot-img-wrap { flex: none; max-width: 100%; max-height: 300px; border-right: none; border-bottom: 1px solid var(--gray-200); }
+}
 
 /* ── PRINT ── */
 @media print {
@@ -1106,7 +1140,13 @@ body {
       </div>
       <div class="screenshot-caption">
         <h4><span class="cap-icon">📱</span> Post-Enrollment Text Messaging</h4>
-        <p>Licensed agents send structured SMS outreach at 7, 10, 14, 20, and 24 days post-enrollment to confirm plan understanding, verify document delivery, and intercept issues before they reach the carrier. Every message is logged with timestamps and linked to the member's policy record. The right panel shows full contact info and associated policies at a glance.</p>
+        <p>This is the built-in SMS module inside PolicyDen. Agents use it to send structured post-enrollment follow-up messages directly to members — confirming their plan is set, checking if documents arrived, and offering help with any questions.</p>
+        <ul class="cap-highlights">
+          <li>Full conversation thread view with sent/received messages and timestamps</li>
+          <li>Contact info panel on the right showing phone, DOB, address, and linked policies with current status</li>
+          <li>Automated outreach templates triggered at 7, 10, 14, 20, and 24 days post-enrollment</li>
+          <li>Every message is permanently logged and tied to the member's policy record for audit</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1118,8 +1158,13 @@ body {
         <img src="img/policyden-policies.png" alt="PolicyDen Policies — enrollment list with status tracking" loading="lazy">
       </div>
       <div class="screenshot-caption">
-        <h4><span class="cap-icon">📋</span> Policy Management & Status Tracking</h4>
-        <p>Every enrollment is tracked with real-time status (Issued, Withdrawn, Pending), carrier assignment, writing agent, and sale date. Summary cards provide instant visibility into pipeline health. Search, filter, and date-range controls enable fast auditing and compliance review.</p>
+        <h4><span class="cap-icon">📋</span> Policy Management</h4>
+        <p>The main policies view showing every enrollment with real-time status badges (Issued, Withdrawn, Pending). The top summary cards show pipeline totals at a glance. Each row links to a full policy detail record.</p>
+        <ul class="cap-highlights">
+          <li>Filterable by date range, carrier, agent, and status</li>
+          <li>Medicare number, sale date, and agency visible per row</li>
+          <li>Search and bulk export for compliance audits</li>
+        </ul>
       </div>
     </div>
     <div class="screenshot-card">
@@ -1128,7 +1173,12 @@ body {
       </div>
       <div class="screenshot-caption">
         <h4><span class="cap-icon">📄</span> Policy Detail Record</h4>
-        <p>Each policy maintains a complete enrollment profile: carrier, plan number, election period, effective date, writing agent, in-network doctors, and active medications. Tabbed views for Documents, Comments, Audit Log, and Status Log provide a full compliance audit trail for every enrollment.</p>
+        <p>Clicking any policy opens this detail panel. It captures the full enrollment profile — carrier, plan number, election period, effective date, and the writing agent — plus the member's doctors and medications with in-network/formulary status.</p>
+        <ul class="cap-highlights">
+          <li>Tabs for Documents, Comments, Audit Log, and Status Log</li>
+          <li>Doctor in-network toggles and medication tracking</li>
+          <li>Workflow controls (skip/enable automated outreach)</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1141,7 +1191,13 @@ body {
       </div>
       <div class="screenshot-caption">
         <h4><span class="cap-icon">⚙️</span> Automated Compliance Workflows</h4>
-        <p>PolicyDen triggers automated actions based on policy lifecycle events. Post-enrollment outreach workflows fire at 7, 10, 14, 20, and 24 days after policy creation — ensuring every new enrollee receives timely follow-up. Status-change workflows handle cancellations, withdrawals, and issuance events with automated notifications and CRM updates. All workflows are toggleable and auditable.</p>
+        <p>This is PolicyDen's workflow engine. Each row is an automated action that fires when a policy event occurs — either a new policy being created or a status change like cancellation or issuance. These workflows drive the post-enrollment outreach sequence and ensure no member falls through the cracks.</p>
+        <ul class="cap-highlights">
+          <li>10 active workflows covering 7, 10, 14, 20, and 24-day post-enrollment outreach</li>
+          <li>Status-change triggers for cancellations, withdrawals, issuance, and pending requests</li>
+          <li>Each workflow is individually toggleable and shows last-modified date</li>
+          <li>Trigger types clearly labeled: POLICY CREATED vs. POLICY UPDATED</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1154,7 +1210,13 @@ body {
       </div>
       <div class="screenshot-caption">
         <h4><span class="cap-icon">📊</span> Agent Performance & Effectuation Reporting</h4>
-        <p>Multi-level breakdown reports track every agent's enrollment pipeline: total policies, pending, accepted, cancelled, at-risk, issued, and placed — with effectuation and placement rate percentages. Reports are filterable by date range, agency, and agent, providing the compliance team with granular visibility into enrollment quality and agent-level trends.</p>
+        <p>PolicyDen's reporting module breaks down enrollment metrics by agency and agent. This view shows a March 2026 snapshot for MyCareClub — 415 total policies across all agents, with per-agent columns for every pipeline stage and effectuation rate. Compliance uses this to identify agents with high at-risk or low effectuation rates.</p>
+        <ul class="cap-highlights">
+          <li>Multi-level breakdown: Agency → Agent with drill-down</li>
+          <li>Columns: Total, Pending, Accepted, Cancelled, At Risk, Acceptance Rate, Issued, Placed, Effectuation %, Placement Rate</li>
+          <li>Saveable and filterable report templates with date-range controls</li>
+          <li>Exportable for carrier compliance submissions and internal reviews</li>
+        </ul>
       </div>
     </div>
   </div>
