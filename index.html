@@ -368,9 +368,9 @@ body {
       <div class="nav-icon">⚙️</div>
       <span class="nav-label">Operations</span>
     </div>
-    <div class="nav-item" onclick="showPage('finance')">
-      <div class="nav-icon">💰</div>
-      <span class="nav-label">Finance</span>
+    <div class="nav-item" onclick="showPage('tech')">
+      <div class="nav-icon">💻</div>
+      <span class="nav-label">Technology</span>
     </div>
     <div class="nav-item" onclick="showPage('legal')">
       <div class="nav-icon">⚖️</div>
@@ -471,7 +471,7 @@ body {
           <li><span class="check green">✓</span><span><strong>Compliance</strong> — CTM mitigation, grievance handling, corrective action plans, carrier liaison</span></li>
           <li><span class="check green">✓</span><span><strong>Human Resources</strong> — Licensed agent hiring, onboarding, credentialing, continuing education</span></li>
           <li><span class="check green">✓</span><span><strong>Operations</strong> — Technology infrastructure, data security, call recording, CRM management</span></li>
-          <li><span class="check green">✓</span><span><strong>Finance</strong> — Commission tracking, carrier reconciliation, audit readiness</span></li>
+          <li><span class="check green">✓</span><span><strong>Technology</strong> — AI platform, data engineering, system integrations, automation infrastructure</span></li>
           <li><span class="check green">✓</span><span><strong>Legal</strong> — Regulatory monitoring, contract management, HIPAA/privacy, carrier compliance</span></li>
         </ul>
       </div>
@@ -1040,64 +1040,82 @@ body {
   </div>
 </div>
 
-<!-- ════════════════════ FINANCE ════════════════════ -->
-<div class="dept-page" id="page-finance">
+<!-- ════════════════════ TECHNOLOGY ════════════════════ -->
+<div class="dept-page" id="page-tech">
   <div class="dept-header">
     <div class="dept-badge" style="background:rgba(16,185,129,0.1);color:#065f46;">Department</div>
-    <h2>Finance</h2>
-    <p>Commission tracking, carrier reconciliation, marketing spend oversight, and financial controls. Finance ensures every dollar flowing through the agency — from marketing investment to carrier commissions — is tracked, reconciled, and audit-ready.</p>
+    <h2>Technology</h2>
+    <p>AI-driven automation, data engineering, cross-system integrations, and software development. Technology builds and maintains the intelligent infrastructure that powers Magnolia's compliance monitoring, automated reporting, and operational efficiency at scale.</p>
   </div>
 
   <div class="stats-row">
-    <div class="stat-card gold"><div class="stat-label">Commission Tracking</div><div class="stat-value">Per-Policy</div><div class="stat-sub">Every enrollment tracked to commission</div></div>
-    <div class="stat-card green"><div class="stat-label">Carrier Reconciliation</div><div class="stat-value">Monthly</div><div class="stat-sub">Statement-to-enrollment matching</div></div>
-    <div class="stat-card blue"><div class="stat-label">Marketing Spend</div><div class="stat-value">Daily</div><div class="stat-sub">Real-time cost tracking via WeGenerate</div></div>
-    <div class="stat-card amber"><div class="stat-label">Audit Readiness</div><div class="stat-value">Ongoing</div><div class="stat-sub">Records available on demand</div></div>
+    <div class="stat-card gold"><div class="stat-label">AI Platform</div><div class="stat-value">MCC-AI</div><div class="stat-sub">Proprietary automation & analytics engine</div></div>
+    <div class="stat-card green"><div class="stat-label">Automated Reports</div><div class="stat-value">Hourly</div><div class="stat-sub">Real-time sales & compliance reporting</div></div>
+    <div class="stat-card blue"><div class="stat-label">System Integrations</div><div class="stat-value">5+</div><div class="stat-sub">Convoso, PolicyDen, WeGenerate, Slack, Notion</div></div>
+    <div class="stat-card amber"><div class="stat-label">Data Pipeline</div><div class="stat-value">Live</div><div class="stat-sub">Cross-system sync and aggregation</div></div>
   </div>
 
   <div class="accordion">
     <div class="accordion-item open">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">💵</span> Commission Management</span>
+        <span class="trigger-left"><span class="trigger-icon">🤖</span> AI & Automation Platform</span>
         <span class="arrow">▼</span>
       </button>
       <div class="accordion-content"><div class="accordion-inner">
         <ul class="proc-list">
-          <li><span class="check green">✓</span><span>Every enrollment linked to the writing agent in PolicyDen CRM — full attribution chain maintained</span></li>
-          <li><span class="check green">✓</span><span>Carrier commission statements reconciled monthly against internal enrollment records</span></li>
-          <li><span class="check green">✓</span><span>Chargebacks tracked and attributed to specific agents — feeds into compliance performance metrics</span></li>
-          <li><span class="check green">✓</span><span>Rapid disenrollment financial impact quantified per agent to support compliance prioritization</span></li>
-          <li><span class="check green">✓</span><span>Override and hierarchy commission splits documented and auditable</span></li>
+          <li><span class="check green">✓</span><span><strong>MCC-AI platform</strong> — proprietary FastAPI backend automating cross-system data collection, report generation, and compliance monitoring</span></li>
+          <li><span class="check green">✓</span><span>Hourly automated Slack reports combining Convoso call data, PolicyDen deal counts, and WeGenerate marketing spend into unified performance snapshots</span></li>
+          <li><span class="check green">✓</span><span>Agent performance rankings generated automatically — call volume, success rates, and deal production merged across systems</span></li>
+          <li><span class="check green">✓</span><span>Disposition intelligence: success codes synced directly from Convoso API — no hardcoded values, single source of truth</span></li>
+          <li><span class="check green">✓</span><span>Scheduled job infrastructure with resilient retry logic — background workers survive transient database outages without manual intervention</span></li>
         </ul>
       </div></div>
     </div>
 
     <div class="accordion-item">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">📊</span> Marketing Spend & CPA Tracking</span>
+        <span class="trigger-left"><span class="trigger-icon">🔗</span> System Integrations & Data Engineering</span>
         <span class="arrow">▼</span>
       </button>
       <div class="accordion-content"><div class="accordion-inner">
         <ul class="proc-list">
-          <li><span class="check blue">●</span><span>Marketing spend tracked daily through WeGenerate integration — every inbound call attributed to marketing cost</span></li>
-          <li><span class="check blue">●</span><span>Cost per acquisition (CPA) calculated per agent, per campaign, per carrier — identifies efficiency and waste</span></li>
-          <li><span class="check blue">●</span><span>Financial impact of CTMs quantified: commission loss + chargeback exposure + marketing spend wasted on disenrolled members</span></li>
-          <li><span class="check blue">●</span><span>Monthly CPA reports shared with leadership to align marketing investment with compliant, persistent enrollment production</span></li>
+          <li><span class="check blue">●</span><span><strong>Convoso integration</strong> — live call log retrieval, disposition sync, agent monitor, and campaign analytics via REST API</span></li>
+          <li><span class="check blue">●</span><span><strong>PolicyDen (Supabase) integration</strong> — real-time CRM queries for enrollment tracking, agent attribution, persistency analysis, and status change monitoring</span></li>
+          <li><span class="check blue">●</span><span><strong>WeGenerate integration</strong> — marketing spend attribution per agent and campaign, CPA calculations, and ROI tracking from RDS replica</span></li>
+          <li><span class="check blue">●</span><span><strong>Slack integration</strong> — automated Block Kit reports, real-time compliance alerts, escalation notifications, and scheduled performance digests</span></li>
+          <li><span class="check blue">●</span><span><strong>MongoDB data layer</strong> — aggregated report storage, disposition caching, scheduled job state management, and historical trend data</span></li>
         </ul>
       </div></div>
     </div>
 
     <div class="accordion-item">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="trigger-left"><span class="trigger-icon">🔍</span> Financial Controls & Audit Trail</span>
+        <span class="trigger-left"><span class="trigger-icon">📊</span> Analytics & Business Intelligence</span>
         <span class="arrow">▼</span>
       </button>
       <div class="accordion-content"><div class="accordion-inner">
         <ul class="proc-list">
-          <li><span class="check gold">★</span><span>Agent compensation tied to quality metrics — not solely volume. Persistency and compliance scores factor into incentive structures.</span></li>
-          <li><span class="check gold">★</span><span>All financial records retained for required period and organized for carrier or CMS audit requests</span></li>
-          <li><span class="check gold">★</span><span>Separation of duties between enrollment processing, commission calculation, and payment disbursement</span></li>
-          <li><span class="check gold">★</span><span>Weekly payroll reconciliation against enrollment data to prevent overpayment on reversed or disenrolled policies</span></li>
+          <li><span class="check gold">★</span><span>Cross-system CPA calculations merging PolicyDen enrollment data with WeGenerate marketing spend — per-agent, per-carrier, per-campaign</span></li>
+          <li><span class="check gold">★</span><span>Persistency tracking with automated cohort analysis — carrier retention rates, rapid disenrollment flags, and agent-level trends</span></li>
+          <li><span class="check gold">★</span><span>Commission statement auditing tools — carrier payment reconciliation against contracted rates with variance detection</span></li>
+          <li><span class="check gold">★</span><span>Daily and weekly payroll automation integrating spiff data, ancillary sales, and hourly tracking into Gusto-ready exports</span></li>
+          <li><span class="check gold">★</span><span>Compliance dashboard generation — this framework document and supporting data visualizations maintained as living, versioned artifacts</span></li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span class="trigger-left"><span class="trigger-icon">🛡️</span> Infrastructure & Reliability</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="accordion-content"><div class="accordion-inner">
+        <ul class="proc-list">
+          <li><span class="check green">✓</span><span>Production deployment on Railway with automated CI/CD — merge to main triggers immediate deploy with zero downtime</span></li>
+          <li><span class="check green">✓</span><span>Background scheduler resilience: all scheduled jobs run as daemon threads with exception isolation — no single failure kills the process</span></li>
+          <li><span class="check green">✓</span><span>Connection timeout enforcement on all external database queries — prevents worker hangs during upstream outages</span></li>
+          <li><span class="check green">✓</span><span>Environment-driven configuration via pydantic-settings — secrets never committed, deployment-specific values externalized</span></li>
+          <li><span class="check green">✓</span><span>Comprehensive test coverage for critical paths: report generation, Slack formatting, schedule loop resilience, and edge cases</span></li>
         </ul>
       </div></div>
     </div>
